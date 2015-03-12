@@ -1,4 +1,4 @@
-# README #
+# DEFINICIÓN #
 
 Aplicación Web para la gestión de flota y monitoreo de flota
 
@@ -6,30 +6,18 @@ Aplicación Web para la gestión de flota y monitoreo de flota
 
 
  1. API
-
-      * REST
+      * RESTful
       * C#
-      * SQL SERVER 2008 R2
-      * Microsoft .NET 4.5
+      * SQL SERVER 2012 R2
+      * Microsoft .NET 5.0
+      * Swagger 2.0 Specification
+      * Karma Framework
 
- 2. Administración Web
+ 2. Web
+      * AngularJS
+      * Material Design
 
-      * ASP.NET MVC
-      * (Base de datos de API)
-      * Bootstrap
-      * Framework Mixture
-      * SQL SERVER 2008 R2
-
- 3. Tecnologia Móvil
-
+ 3. Móvil
       * Ionic Framework
       * AngularJS
       * Phonegap
-
-
- 3. Aplicaciones Móviles
-
-       * Relsa
-      * Bmw
-      * Auxilia
-      * Automovil Club Chile
