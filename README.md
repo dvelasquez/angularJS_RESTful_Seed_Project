@@ -2,10 +2,13 @@
 
 Aplicación Web para la gestión de flota y monitoreo de flota
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Requerimientos:
 
    * SQL SERVER 2012 R2
    * Microsoft .NET 5.0
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Componentes:
 
@@ -24,7 +27,7 @@ Aplicación Web para la gestión de flota y monitoreo de flota
       * [Ionic Framework](http://ionicframework.com/)
       * [AngularJS](https://angularjs.org/)
       * [Phonegap](http://phonegap.com/)
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## URI's:
 
@@ -33,6 +36,9 @@ Aplicación Web para la gestión de flota y monitoreo de flota
 API Url                          | _$(ProjectUrl)_ **/v1**
 Swagger API doc's       | _$(ProjectUrl)_ **/swagger/**
 Swagger Specification  | _$(ProjectUrl)_ **/swagger/docs/v1**
+
+__$(ProjectUrl)__\* : _Dirección Url donde se publicara el sistema_
+
 
 ## Contacto:
 
