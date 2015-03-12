@@ -1,0 +1,2211 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Definición API - Resiter Monitoreo",
+        "description": "Servicios API para el control y administración de flota",
+        "version": "1.0.0"
+    },
+    "host": "resiter.monitoreo.cl",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/Resiter/Monitoreo/API/v1",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "security": [
+        {
+            "JWT": []
+        }
+    ],
+    "paths": {
+        "/administration/role": {
+            "get": {
+                "summary": "Colección de Roles",
+                "description": "Obtiene la colección de roles en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Identificador del Rol a buscar (ENTIDAD)",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección de Roles",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Rol-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Registra un nuevo Rol",
+                "description": "Registra un nuevo rol en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Rol-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Registro OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualiza un rol existente",
+                "description": "Actualiza un rol existente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Rol-U"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Actualización OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Elimina un Rol",
+                "description": "Elimina un Rol existente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Identificador del Rol a eliminar",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eliminación OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/administration/user": {
+            "get": {
+                "summary": "Colección de Usuarios",
+                "description": "Obtiene la colección de Usuarios en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Identificador del Usuario a buscar (ENTIDAD)",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección de Usuarios",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Registra un nuevo Usuario",
+                "description": "Registra un nuevo usuario en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/User-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Registro OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualiza un Usuario existente",
+                "description": "Actualiza un Usuario existente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/User-U"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Actualización OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Elimina un Usuario",
+                "description": "Elimina un Usuario existente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Identificador del Usuario a eliminar",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eliminación OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/administration/serviceType": {
+            "get": {
+                "summary": "Colección de Tipos de Servicios",
+                "description": "Obtiene la colección de Tipos de Servicios en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Identificador del Tipo de Servicio a buscar",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección de Tipos de Servicio",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ServiceType-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Registra un nuevo Tipo de Servicio",
+                "description": "Registra un nuevo Tipo de Servicio en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceType-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Registro OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualiza un Tipo de Servicio existente",
+                "description": "Actualiza un Tipo de Servicio existente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceType-U"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Actualización OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Elimina un Tipo de Servicio",
+                "description": "Elimina un Tipo de Servicio existente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Identificador del Tipo de Servicio a eliminar",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eliminación OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/administration/businessUnit": {
+            "get": {
+                "summary": "Colección de Unidades de Negocio",
+                "description": "Obtiene la colección de Unidades de Negocio en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Identificador de la Unidad de Negocio a buscar (ENTIDAD)",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección de Unidades de Negocio",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BusinessUnit-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Registra una nueva unidad de negocio",
+                "description": "Registra una nueva unidad de negocio\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/BusinessUnit-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Registro OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualiza una unidad de negocio",
+                "description": "Actualiza una unidad de negocioexistente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/BusinessUnit-U"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Actualización OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/administration/container": {
+            "get": {
+                "summary": "Colección de Contenedores",
+                "description": "Obtiene la colección de Contenedores en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Identificador del Contenedor de Servicio a buscar",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección de Contenedores",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Container-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Registra un nuevo Contenedor",
+                "description": "Registra un nuevo Contenedor en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Container-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Registro OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Actualiza un Tipo de Servicio existente",
+                "description": "Actualiza un Tipo de Servicio existente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Container-U"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Actualización OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Elimina un Tipo de Servicio",
+                "description": "Elimina un Tipo de Servicio existente en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Identificador del Tipo de Servicio a eliminar",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eliminación OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/security/authenticate": {
+            "post": {
+                "summary": "Valida las credenciales del usuario",
+                "description": "Provee un mecanismo de autenticación de usuario basado en Json Web Token (JWT)\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Authenticate-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Seguridad"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Autenticación OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/notification": {
+            "get": {
+                "summary": "Colección de Notificaciones",
+                "description": "Obtiene la colección de Notificaciones en el sistema\n",
+                "tags": [
+                    "Notificaciones"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección de Notificaciones",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Notification-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/notification/alert": {
+            "post": {
+                "summary": "Ingresa una notificación de alerta para un usuario",
+                "description": "Registra una alerta en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Alert-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Notificaciones"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Registro OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/integration/sgs/driver": {
+            "get": {
+                "summary": "Colección de Conductor desde el sistema SGS",
+                "description": "Obtiene la colección de Conductor del sistema SGS\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Identificador del Conductor a buscar en el sistema SGS",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Integración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección de Conductores",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Driver-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/integration/sgs/vehicles": {
+            "get": {
+                "summary": "Colección de Vehiculos desde el sistema SGS",
+                "description": "Obtiene la colección de Vehiculos del sistema SGS\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Identificador del Vehiculos a buscar en el sistema SGS",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Integración"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección de Vehiculos",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Vehicle-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/application/monitor": {
+            "get": {
+                "summary": "Información sobre el estado de una unidad de negocio activa",
+                "description": "Obtiene la información sobre el estado de una unidad de negocio activa en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Monitoreo",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Información de Estado de la Unidad de Negocio",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Monitor-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/application/monitor/polygon": {
+            "get": {
+                "summary": "Información sobre un Polígono para una unidad de negocio",
+                "description": "Obtiene la información de un Polígono\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "point",
+                        "in": "query",
+                        "description": "Identificador del Polígono a extraer la información",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Monitoreo",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Información del Polígono",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Poligono-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/application/monitor/statistics": {
+            "get": {
+                "summary": "Información Estadistica de una unidad de negocio",
+                "description": "Obtiene la información Estadistica de una unidad de negocio\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Monitoreo",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Información Estadistica",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Estadistica-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/application/businessUnit": {
+            "get": {
+                "summary": "Información de una unidad de negocio",
+                "description": "Obtiene la información de una unidad de negocio\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Monitoreo",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Información de la unidad de negocio",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BusinessUnit-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/application/businessUnit/configuration": {
+            "get": {
+                "summary": "Obtiene la configuración de una unidad de negocio",
+                "description": "Obtiene la información de una unidad de negocio\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Monitoreo",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Configuración de la unidad de negocio",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BusinessUnitConfiguration-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Configura una unidad de negocio",
+                "description": "Registra una configuración para una unidad de negocio\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/BusinessUnitConfiguration-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Administración",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Configuración OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/application/businessUnit/route": {
+            "get": {
+                "summary": "Obtiene la hoja de ruta de una unidad de negocio",
+                "description": "Obtiene la hoja de ruta de una unidad de negocio en el sistema\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Fecha del registro de la hoja de ruta",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "driver",
+                        "in": "query",
+                        "description": "Identificador del conductor",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Hoja de Ruta",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Información de la hoja de ruta",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Route-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/application/businessUnit/route/record": {
+            "post": {
+                "summary": "Ingresa un registro para la hoja de ruta",
+                "description": "Registro de un registro de hoja de ruta\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Fecha del registro de la hoja de ruta",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "driver",
+                        "in": "query",
+                        "description": "Identificador del conductor",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/RecordRoute-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Hoja de Ruta",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Registro OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Elimina un Registro de una hoja de Ruta",
+                "description": "Elimina un Registro de una hoja de Ruta\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Identificador de la hoja de ruta a eliminar",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Hoja de Ruta",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Eliminación OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/application/businessUnit/programming": {
+            "get": {
+                "summary": "Obtiene la programación para una unidad de negocio",
+                "description": "Obtiene la programación para una unidad de negocio\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Hoja de Ruta",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Programación",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Programming-R"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Configura una programación para una unidad de negocio",
+                "description": "Configura una programación para una unidad de negocio\n",
+                "parameters": [
+                    {
+                        "name": "businessUnit",
+                        "in": "header",
+                        "description": "Identificador de la unidad de negocio",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Payload",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Programming-C"
+                        },
+                        "description": "Entidad",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Hoja de Ruta",
+                    "Aplicación"
+                ],
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Registro OK",
+                        "schema": {
+                            "$ref": "#/definitions/Created"
+                        }
+                    },
+                    "401": {
+                        "description": "No autorizado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Error Inesperado",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "JWT": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization",
+            "description": "Llave de autorización (Identificación del Usuario quien ejecuta la acción en format Json Web Token (JWT))"
+        }
+    },
+    "definitions": {
+        "Rol-C": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                }
+            }
+        },
+        "Rol-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                }
+            }
+        },
+        "Rol-U": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                }
+            }
+        },
+        "User-C": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Correo Electrónico"
+                },
+                "photo": {
+                    "type": "string",
+                    "description": "URL de la imagen de perfil"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Identificadores de los roles"
+                }
+            }
+        },
+        "User-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Correo Electrónico"
+                },
+                "photo": {
+                    "type": "string",
+                    "description": "URL de la imagen de perfil"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Rol-R"
+                    },
+                    "description": "Roles asociados al usuario"
+                }
+            }
+        },
+        "User-U": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Correo Electrónico"
+                },
+                "photo": {
+                    "type": "string",
+                    "description": "URL de la imagen de perfil"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Identificadores de los roles"
+                }
+            }
+        },
+        "ServiceType-C": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                },
+                "behavior": {
+                    "type": "string",
+                    "description": "Comportamiento del tipo de servicio"
+                }
+            }
+        },
+        "ServiceType-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                },
+                "behavior": {
+                    "type": "string",
+                    "description": "Comportamiento del tipo de servicio"
+                }
+            }
+        },
+        "ServiceType-U": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                },
+                "behavior": {
+                    "type": "string",
+                    "description": "Comportamiento del tipo de servicio"
+                }
+            }
+        },
+        "BusinessUnit-C": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "contract": {
+                    "type": "integer",
+                    "description": "Número del Contrato"
+                },
+                "client": {
+                    "type": "string",
+                    "description": "Identificador del Cliente"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                },
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                }
+            }
+        },
+        "BusinessUnit-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "contract": {
+                    "type": "integer",
+                    "description": "Número del Contrato"
+                },
+                "client": {
+                    "type": "string",
+                    "description": "Identificador del Cliente"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                },
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                }
+            }
+        },
+        "BusinessUnit-U": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "contract": {
+                    "type": "integer",
+                    "description": "Número del Contrato"
+                },
+                "client": {
+                    "type": "string",
+                    "description": "Identificador del Cliente"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                },
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                }
+            }
+        },
+        "Container-C": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Identificador del Tipo de Contenedor"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                }
+            }
+        },
+        "Container-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Identificador del Tipo de Contenedor"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                }
+            }
+        },
+        "Container-U": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Identificador del Tipo de Contenedor"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Breve Descripción"
+                }
+            }
+        },
+        "Notification-R": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Fecha de Creación"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Mensaje de Alerta"
+                }
+            }
+        },
+        "Alert-C": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Fecha de Creación"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Mensaje de Alerta"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Identificador del Tipo de Alerta"
+                }
+            }
+        },
+        "Driver-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Nombre"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Correo Electrónico"
+                },
+                "photo": {
+                    "type": "string",
+                    "description": "URL de la imagen de perfil"
+                }
+            }
+        },
+        "Vehicle-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "patent": {
+                    "type": "string",
+                    "description": "Patente"
+                },
+                "photo": {
+                    "type": "string",
+                    "description": "URL de la imagen del vehiculo"
+                }
+            }
+        },
+        "Monitor-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador"
+                },
+                "poligonos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Poligono-R"
+                    },
+                    "description": "Colección de Poligonos que componen la unidad de negocio"
+                }
+            }
+        },
+        "Poligono-R": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador del Poligono-R"
+                },
+                "coordinates": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Coordenada-R"
+                    },
+                    "description": "Agrupación de coordenadas que compone un Poligono-R"
+                }
+            }
+        },
+        "Coordenada-R": {
+            "properties": {
+                "lat": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Latitud"
+                },
+                "lng": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Longitud"
+                }
+            }
+        },
+        "Estadistica-R": {
+            "properties": {
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EstadisticaServicio-R"
+                    },
+                    "description": "Colección de Estadisticas de los servicios asociados a la unidad"
+                }
+            }
+        },
+        "EstadisticaServicio-R": {
+            "properties": {
+                "kpis": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Colección de Estadisticas de los servicios asociados a la unidad"
+                }
+            }
+        },
+        "BusinessUnitConfiguration-C": {
+            "properties": {
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                }
+            }
+        },
+        "BusinessUnitConfiguration-R": {
+            "properties": {
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                }
+            }
+        },
+        "Route-R": {
+            "properties": {
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RecordRoute-R"
+                    },
+                    "description": "Servicio de la hoja de ruta a realizar"
+                }
+            }
+        },
+        "Authenticate-C": {
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "description": "Nombre de usuario"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password"
+                }
+            }
+        },
+        "RecordRoute-C": {
+            "properties": {
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                }
+            }
+        },
+        "RecordRoute-R": {
+            "properties": {
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                }
+            }
+        },
+        "Programming-C": {
+            "properties": {
+                "supervisor": {
+                    "$ref": "#/definitions/User-R",
+                    "description": "Supervisor a cargo de la unidad"
+                }
+            }
+        },
+        "Programming-R": {
+            "properties": {
+                "service": {
+                    "$ref": "#/definitions/ServiceType-R",
+                    "description": "Tipo de Servicio Programado"
+                },
+                "days": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ProgrammingDay-R"
+                    },
+                    "description": "Programación Diaria"
+                }
+            }
+        },
+        "ProgrammingDay-R": {
+            "properties": {
+                "day": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Dia de la Programación"
+                },
+                "amount": {
+                    "type": "string",
+                    "description": "Cantidad de Veces que se debe realizar el servicio"
+                }
+            }
+        },
+        "Created": {
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Identificador de la entidad creada"
+                }
+            }
+        },
+        "Error": {
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1644 @@
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Definición API - Resiter Monitoreo
+  description: Servicios API para el control y administración de flota
+  version: "1.0.0"
+# the domain of the service
+host: resiter.monitoreo.cl
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /Resiter/Monitoreo/API/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+security:
+  - JWT: []
+paths:
+
+  #API: ADMINISTRACION DE ROLES
+  /administration/role:
+    get:
+      summary: Colección de Roles
+      description: |
+        Obtiene la colección de roles en el sistema
+      parameters:
+        - name: token
+          in: query
+          description: Identificador del Rol a buscar (ENTIDAD)
+          required: false
+          type: string
+          
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Colección de Roles
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rol-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    post:
+      summary: Registra un nuevo Rol
+      description: |
+        Registra un nuevo rol en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/Rol-C'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Registro OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    put:
+      summary: Actualiza un rol existente
+      description: |
+        Actualiza un rol existente en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/Rol-U'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        204:
+          description: Actualización OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    delete:
+      summary: Elimina un Rol
+      description: |
+        Elimina un Rol existente en el sistema
+      parameters:
+        - name: token
+          in: query
+          type: string
+          description: Identificador del Rol a eliminar
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Eliminación OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: ADMINISTRACION DE USUARIOS
+  /administration/user:
+    get:
+      summary: Colección de Usuarios
+      description: |
+        Obtiene la colección de Usuarios en el sistema
+      parameters:
+        - name: token
+          in: query
+          description: Identificador del Usuario a buscar (ENTIDAD)
+          required: false
+          type: string
+          
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Colección de Usuarios
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    post:
+      summary: Registra un nuevo Usuario
+      description: |
+        Registra un nuevo usuario en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/User-C'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Registro OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    put:
+      summary: Actualiza un Usuario existente
+      description: |
+        Actualiza un Usuario existente en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/User-U'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        204:
+          description: Actualización OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    delete:
+      summary: Elimina un Usuario
+      description: |
+        Elimina un Usuario existente en el sistema
+      parameters:
+        - name: token
+          in: query
+          type: string
+          description: Identificador del Usuario a eliminar
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Eliminación OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+  
+
+  #API: ADMINISTRACION DE TIPOS DE SERVICIOS
+  /administration/serviceType:
+    get:
+      summary: Colección de Tipos de Servicios
+      description: |
+        Obtiene la colección de Tipos de Servicios en el sistema
+      parameters:
+        - name: token
+          in: query
+          description: Identificador del Tipo de Servicio a buscar
+          required: false
+          type: string
+          
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Colección de Tipos de Servicio
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ServiceType-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    post:
+      summary: Registra un nuevo Tipo de Servicio
+      description: |
+        Registra un nuevo Tipo de Servicio en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/ServiceType-C'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Registro OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    put:
+      summary: Actualiza un Tipo de Servicio existente
+      description: |
+        Actualiza un Tipo de Servicio existente en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/ServiceType-U'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        204:
+          description: Actualización OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    delete:
+      summary: Elimina un Tipo de Servicio
+      description: |
+        Elimina un Tipo de Servicio existente en el sistema
+      parameters:
+        - name: token
+          in: query
+          type: string
+          description: Identificador del Tipo de Servicio a eliminar
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Eliminación OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: ADMINISTRACION DE UNIDADES DE NEGOCIO
+  /administration/businessUnit:
+    get:
+      summary: Colección de Unidades de Negocio
+      description: |
+        Obtiene la colección de Unidades de Negocio en el sistema
+      parameters:
+        - name: token
+          in: query
+          description: Identificador de la Unidad de Negocio a buscar (ENTIDAD)
+          required: false
+          type: string
+          
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Colección de Unidades de Negocio
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BusinessUnit-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    post:
+      summary: Registra una nueva unidad de negocio
+      description: |
+        Registra una nueva unidad de negocio
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/BusinessUnit-C'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Registro OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    put:
+      summary: Actualiza una unidad de negocio
+      description: |
+        Actualiza una unidad de negocioexistente en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/BusinessUnit-U'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        204:
+          description: Actualización OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+  #API: ADMINISTRACION DE CONTENEDORES
+  /administration/container:
+    get:
+      summary: Colección de Contenedores
+      description: |
+        Obtiene la colección de Contenedores en el sistema
+      parameters:
+        - name: token
+          in: query
+          description: Identificador del Contenedor de Servicio a buscar
+          required: false
+          type: string
+          
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Colección de Contenedores
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Container-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    post:
+      summary: Registra un nuevo Contenedor
+      description: |
+        Registra un nuevo Contenedor en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/Container-C'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Registro OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    put:
+      summary: Actualiza un Tipo de Servicio existente
+      description: |
+        Actualiza un Tipo de Servicio existente en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/Container-U'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        204:
+          description: Actualización OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    delete:
+      summary: Elimina un Tipo de Servicio
+      description: |
+        Elimina un Tipo de Servicio existente en el sistema
+      parameters:
+        - name: token
+          in: query
+          type: string
+          description: Identificador del Tipo de Servicio a eliminar
+          required: true
+      tags:
+        - Administración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Eliminación OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: AUTENTICACIÓN DE USUARIO
+  /security/authenticate:
+    post:
+      summary: Valida las credenciales del usuario
+      description: |
+        Provee un mecanismo de autenticación de usuario basado en Json Web Token (JWT)
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/Authenticate-C'
+          description: Entidad
+          required: true
+      tags:
+        - Seguridad
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Autenticación OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: NOTIFICACIONES
+  /notification:
+    get:
+      summary: Colección de Notificaciones
+      description: |
+        Obtiene la colección de Notificaciones en el sistema
+      tags:
+        - Notificaciones
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Colección de Notificaciones
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Notification-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: NOTIFICACIONES > ALERTAS
+  /notification/alert:
+    post:
+      summary: Ingresa una notificación de alerta para un usuario
+      description: |
+        Registra una alerta en el sistema
+      parameters:
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/Alert-C'
+          description: Entidad
+          required: true
+      tags:
+        - Notificaciones
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Registro OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: INTEGRACIÓN DE CHOFERES CON EL SISTEMA SGS
+  /integration/sgs/driver:
+    get:
+      summary: Colección de Conductor desde el sistema SGS
+      description: |
+        Obtiene la colección de Conductor del sistema SGS
+      parameters:
+        - name: token
+          in: query
+          description: Identificador del Conductor a buscar en el sistema SGS
+          required: false
+          type: string
+          
+      tags:
+        - Integración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Colección de Conductores
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Driver-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: INTEGRACIÓN DE VEHICULOS CON EL SISTEMA SGS
+  /integration/sgs/vehicles:
+    get:
+      summary: Colección de Vehiculos desde el sistema SGS
+      description: |
+        Obtiene la colección de Vehiculos del sistema SGS
+      parameters:
+        - name: token
+          in: query
+          description: Identificador del Vehiculos a buscar en el sistema SGS
+          required: false
+          type: string
+          
+      tags:
+        - Integración
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Colección de Vehiculos
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Vehicle-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: MAPA (MONITOR)
+  /application/monitor:
+    get:
+      summary: Información sobre el estado de una unidad de negocio activa
+      description: |
+        Obtiene la información sobre el estado de una unidad de negocio activa en el sistema
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+          
+      tags:
+        - Monitoreo
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Información de Estado de la Unidad de Negocio
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Monitor-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: MAPA (MONITOR) > POLÍGONO
+  /application/monitor/polygon:
+    get:
+      summary: Información sobre un Polígono para una unidad de negocio
+      description: |
+        Obtiene la información de un Polígono
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+
+        - name: point
+          in: query
+          description: Identificador del Polígono a extraer la información
+          required: true
+          type: string
+          
+      tags:
+        - Monitoreo
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Información del Polígono
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Poligono-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+  #API: MAPA (MONITOR) > ESTADISTICAS
+  /application/monitor/statistics:
+    get:
+      summary: Información Estadistica de una unidad de negocio
+      description: |
+        Obtiene la información Estadistica de una unidad de negocio
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+          
+      tags:
+        - Monitoreo
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Información Estadistica
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Estadistica-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: UNIDAD DE NEGOCIO
+  /application/businessUnit:
+    get:
+      summary: Información de una unidad de negocio
+      description: |
+        Obtiene la información de una unidad de negocio
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+
+      tags:
+        - Monitoreo
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Información de la unidad de negocio
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BusinessUnit-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: UNIDAD DE NEGOCIO > CONFIGURATION
+  /application/businessUnit/configuration:
+    get:
+      summary: Obtiene la configuración de una unidad de negocio
+      description: |
+        Obtiene la información de una unidad de negocio
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+
+      tags:
+        - Monitoreo
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Configuración de la unidad de negocio
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BusinessUnitConfiguration-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    post:
+      summary: Configura una unidad de negocio
+      description: |
+        Registra una configuración para una unidad de negocio
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/BusinessUnitConfiguration-C'
+          description: Entidad
+          required: true
+      tags:
+        - Administración
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Configuración OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: UNIDAD DE NEGOCIO > HOJA DE RUTA
+  /application/businessUnit/route:
+    get:
+      summary: Obtiene la hoja de ruta de una unidad de negocio
+      description: |
+        Obtiene la hoja de ruta de una unidad de negocio en el sistema
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+
+        - name: date
+          in: query
+          description: Fecha del registro de la hoja de ruta
+          required: true
+          type: string
+          format: date
+
+        - name: driver
+          in: query
+          description: Identificador del conductor
+          required: false
+          type: string
+
+      tags:
+        - Hoja de Ruta
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Información de la hoja de ruta
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Route-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+    
+
+  #API: UNIDAD DE NEGOCIO > HOJA DE RUTA > REGISTRO
+  /application/businessUnit/route/record:
+    post:
+      summary: Ingresa un registro para la hoja de ruta
+      description: |
+        Registro de un registro de hoja de ruta
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+
+        - name: date
+          in: query
+          description: Fecha del registro de la hoja de ruta
+          required: true
+          type: string
+          format: date
+
+        - name: driver
+          in: query
+          description: Identificador del conductor
+          required: true
+          type: string
+
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/RecordRoute-C'
+          description: Entidad
+          required: true
+
+      tags:
+        - Hoja de Ruta
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Registro OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+    delete:
+      summary: Elimina un Registro de una hoja de Ruta
+      description: |
+        Elimina un Registro de una hoja de Ruta
+      parameters:
+        - name: token
+          in: query
+          type: string
+          description: Identificador de la hoja de ruta a eliminar
+          required: true
+      tags:
+        - Hoja de Ruta
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Eliminación OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  #API: UNIDAD DE NEGOCIO > PROGRAMACIÓN MENSUAL
+  /application/businessUnit/programming:
+    get:
+      summary: Obtiene la programación para una unidad de negocio
+      description: |
+        Obtiene la programación para una unidad de negocio
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+
+      tags:
+        - Hoja de Ruta
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: Programación
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Programming-R'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+    
+    post:
+      summary: Configura una programación para una unidad de negocio
+      description: |
+        Configura una programación para una unidad de negocio
+      parameters:
+        - name: businessUnit
+          in: header
+          description: Identificador de la unidad de negocio
+          required: true
+          type: string
+
+        - name: Payload
+          in: body
+          schema:
+            $ref: '#/definitions/Programming-C'
+          description: Entidad
+          required: true
+
+      tags:
+        - Hoja de Ruta
+        - Aplicación
+      security:
+        - JWT: []
+      responses:
+        201:
+          description: Registro OK
+          schema:
+            $ref: '#/definitions/Created'
+        500:
+          description: Error Inesperado
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: No autorizado
+          schema:
+            $ref: '#/definitions/Error'
+
+securityDefinitions:
+  JWT:
+    type: apiKey
+    in: header
+    name: Authorization
+    description: Llave de autorización (Identificación del Usuario quien ejecuta la acción en format Json Web Token (JWT))
+  
+definitions:
+
+  #API: ROL
+  Rol-C: 
+    properties:
+      name:
+        type: string
+        description: Nombre
+      description:
+        type: string
+        description: Breve Descripción
+
+  Rol-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      description:
+        type: string
+        description: Breve Descripción
+
+  Rol-U: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      description:
+        type: string
+        description: Breve Descripción
+
+
+  #API: USUARIO
+  User-C: 
+    properties:
+      name:
+        type: string
+        description: Nombre
+      email:
+        type: string
+        description: Correo Electrónico
+      photo:
+        type: string
+        description: URL de la imagen de perfil
+      roles:
+        type: array
+        items:
+          type: string
+        description: Identificadores de los roles
+
+  User-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      email:
+        type: string
+        description: Correo Electrónico
+      photo:
+        type: string
+        description: URL de la imagen de perfil
+      roles:
+        type: array
+        items:
+          $ref: '#/definitions/Rol-R'
+        description: Roles asociados al usuario
+
+  User-U: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      email:
+        type: string
+        description: Correo Electrónico
+      photo:
+        type: string
+        description: URL de la imagen de perfil
+      roles:
+        type: array
+        items:
+          type: string
+        description: Identificadores de los roles
+
+
+  #API: TIPO DE SERVICIO
+  ServiceType-C: 
+    properties:
+      name:
+        type: string
+        description: Nombre
+      description:
+        type: string
+        description: Breve Descripción
+      behavior:
+        type: string
+        description: Comportamiento del tipo de servicio
+
+  ServiceType-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      description:
+        type: string
+        description: Breve Descripción
+      behavior:
+        type: string
+        description: Comportamiento del tipo de servicio
+
+  ServiceType-U: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      description:
+        type: string
+        description: Breve Descripción
+      behavior:
+        type: string
+        description: Comportamiento del tipo de servicio
+
+
+  #API: UNIDAD DE NEGOCIO
+  BusinessUnit-C: 
+    properties:
+      name:
+        type: string
+        description: Nombre
+      contract:
+        type: integer
+        description: Número del Contrato
+      client: 
+        type: string
+        description: Identificador del Cliente
+      description:
+        type: string
+        description: Breve Descripción
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+
+  BusinessUnit-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      contract:
+        type: integer
+        description: Número del Contrato
+      client: 
+        type: string
+        description: Identificador del Cliente
+      description:
+        type: string
+        description: Breve Descripción
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+
+  BusinessUnit-U: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      contract:
+        type: integer
+        description: Número del Contrato
+      client: 
+        type: string
+        description: Identificador del Cliente
+      description:
+        type: string
+        description: Breve Descripción
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+
+
+  #API: CONTENEDOR
+  Container-C: 
+    properties:
+      name:
+        type: string
+        description: Nombre
+      type:
+        type: string
+        description: Identificador del Tipo de Contenedor
+      description:
+        type: string
+        description: Breve Descripción
+
+  Container-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      type:
+        type: string
+        description: Identificador del Tipo de Contenedor
+      description:
+        type: string
+        description: Breve Descripción
+
+  Container-U: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      type:
+        type: string
+        description: Identificador del Tipo de Contenedor
+      description:
+        type: string
+        description: Breve Descripción
+
+
+  #API: NOTIFICATION
+  Notification-R: 
+    properties:
+      name:
+        type: string
+        description: Nombre
+      date:
+        type: string
+        format: date-time
+        description: Fecha de Creación
+      message:
+        type: string
+        description: Mensaje de Alerta
+
+
+  #API: ALERTA
+  Alert-C: 
+    properties:
+      name:
+        type: string
+        description: Nombre
+      date:
+        type: string
+        format: date-time
+        description: Fecha de Creación
+      message:
+        type: string
+        description: Mensaje de Alerta
+      type:
+        type: string
+        description: Identificador del Tipo de Alerta
+
+
+  #API: CONDUCTOR
+  Driver-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      name:
+        type: string
+        description: Nombre
+      email:
+        type: string
+        description: Correo Electrónico
+      photo:
+        type: string
+        description: URL de la imagen de perfil
+
+  #API: VEHICULO
+  Vehicle-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      patent:
+        type: string
+        description: Patente
+      photo:
+        type: string
+        description: URL de la imagen del vehiculo
+
+
+  #API: MONITOR
+  Monitor-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador
+      poligonos:
+        type: array 
+        items:
+          $ref: '#/definitions/Poligono-R'
+        description: Colección de Poligonos que componen la unidad de negocio
+
+
+  #API: POLIGONO
+  Poligono-R: 
+    properties:
+      token:
+        type: string
+        description: Identificador del Poligono-R
+      coordinates:
+        type: array
+        items:
+          $ref: '#/definitions/Coordenada-R'
+        description: Agrupación de coordenadas que compone un Poligono-R
+
+
+  #API: COORDENADA
+  Coordenada-R: 
+    properties:
+      lat:
+        type: number
+        format: float
+        description: Latitud
+      lng:
+        type: number
+        format: float
+        description: Longitud
+
+
+  #API: ESTADISITCA
+  Estadistica-R: 
+    properties:
+      services:
+        type: array
+        items:
+          $ref: '#/definitions/EstadisticaServicio-R'
+        description: Colección de Estadisticas de los servicios asociados a la unidad
+
+
+  #API: ESTADISTICA DE UN SERVICIO
+  EstadisticaServicio-R: 
+    properties:
+      kpis:
+        type: array
+        items:
+          type: string
+        description: Colección de Estadisticas de los servicios asociados a la unidad
+
+
+  #API: CONFIGURACION DE UNA UNIDAD DE NEGOCIO
+  BusinessUnitConfiguration-C:
+    properties:
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+
+  BusinessUnitConfiguration-R:
+    properties:
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+
+
+
+  #API: HOJA DE RUTA
+  Route-R:
+    properties:
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/RecordRoute-R'
+        description: Servicio de la hoja de ruta a realizar
+
+        
+
+  #API: AUTENTICACIÓN
+  Authenticate-C:
+    properties:
+      username:
+        type: string
+        description: Nombre de usuario
+      password:
+        type: string
+        description: Password
+
+
+  #API: HOJA DE RUTA  > REGISTRO
+  RecordRoute-C:
+    properties:
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+
+  RecordRoute-R:
+    properties:
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+
+  #API: PROGRAMACION
+  Programming-C:
+    properties:
+      supervisor:
+        $ref: '#/definitions/User-R'
+        description: Supervisor a cargo de la unidad
+
+  Programming-R:
+    properties:
+      service: 
+        $ref: '#/definitions/ServiceType-R'
+        description: Tipo de Servicio Programado
+      days:
+        type: array
+        items:
+          $ref: '#/definitions/ProgrammingDay-R'
+        description: Programación Diaria
+
+
+  #API: PROGRAMACION > ITEM
+  ProgrammingDay-R:
+    properties:
+      day:
+        type: string
+        format: date
+        description: Dia de la Programación
+      amount:
+        type: string
+        description: Cantidad de Veces que se debe realizar el servicio
+
+
+  #API: CREATED
+  Created:
+    properties:
+      token:
+        type: string
+        description: Identificador de la entidad creada
+
+
+  #API: ERROR
+  Error:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      fields:
+        type: string

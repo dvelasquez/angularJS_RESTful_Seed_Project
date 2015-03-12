@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RS_MonitoreoDigital" Class="AdministrationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.VIEW_Perfil" Member="Rols">
+    <Type Name="Rol">
+      <Column Name="ENTI_Nombre" Member="name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PERF_Descripcion" Member="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="PERF_Identificador" Member="identifier" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="ENTI_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MAE_Configuracion" Member="Configuracions">
+    <Type Name="Configuracion">
+      <Column Name="CONF_TCNF_Codigo" Member="type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CONF_Nombre" Member="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CONF_Descripcion" Member="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="CONF_Valor" Member="value" Type="System.String" DbType="VarChar(8000) NOT NULL" CanBeNull="false" />
+      <Column Name="CONF_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VIEW_Configuracion" Member="VIEW_Configuracions">
+    <Type Name="VIEW_Configuracion">
+      <Column Name="CONF_Nombre" Member="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CONF_Valor" Member="value" Type="System.String" DbType="VarChar(8000) NOT NULL" CanBeNull="false" />
+      <Column Name="TCNF_Nombre" Member="type" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CONF_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="Securities">
+    <Type Name="Security">
+      <Column Member="username" Type="System.String" CanBeNull="false" />
+      <Column Member="password" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
