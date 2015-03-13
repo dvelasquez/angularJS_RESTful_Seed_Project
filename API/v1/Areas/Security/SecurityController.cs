@@ -14,7 +14,7 @@ namespace API.Areas.Security
     {
 
         /// <summary>
-        /// Create a token for a Valid User
+        /// Autentica a un usuario de acuerdo a las credenciales
         /// </summary>
         /// <param name="user">Datos del usuario para autenticar</param>
         /// <returns></returns>
