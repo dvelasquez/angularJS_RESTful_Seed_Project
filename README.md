@@ -1,6 +1,6 @@
-# Proyecto Semilla: __AngularJS__ + __API .NET__  (_Swagger Doc's_)
+# Proyecto Semilla: __AngularJS__ + __API REST__  (_Swagger Doc's_)
 
-El principal objetivo de este proyecto es entregar una plantilla semilla que se usará como base para cualquier proyecto a realizar en __AngularJS__ sobre un navegador web de escritorio, para lograr optimizar los tiempos y reducir la brecha de error en las tareas repetitivas que deben ser ejecutadas constantemente dentro del ciclo de vida de un proyecto. 
+El principal objetivo de este proyecto es entregar una plantilla semilla que se usará como base para cualquier proyecto a realizar en __AngularJS__ sobre un cliente web (escritoio o móvil), para lograr optimizar los tiempos y reducir la brecha de error en las tareas repetitivas que deben ser ejecutadas constantemente dentro del ciclo de vida de un proyecto. 
 
 ---------------------------------------------------------------------------------------------------------------------------------
 ## Componentes:
@@ -68,15 +68,15 @@ Comenzaremos clonando este repositorio en el repositorio del nuevo proyecto:
 
 ```shell
 # Hacemos una copia simple del repositorio (bare clone)
-git clone --bare https://dmunozgaete@bitbucket.org/valentysarquitectura/angularjs_web_seedproject.git
+git clone --bare https://dmunozgaete@bitbucket.org/valentysarquitectura/angularjs_rest_seedproject.git
 
 # Enviamos el contenido clonado al nuevo repositorio (mirror-push)
-cd angularjs_web_seedproject.git
+cd angularjs_rest_seedproject.git
 git push --mirror https://dmunozgaete@bitbucket.org/{team}/{nuevo-repositorio}.git
 
 # Limpiamos un poco eliminando la copia simple del directorio (Remove our temporary local repository)
 cd ..
-rm -rf https://dmunozgaete@bitbucket.org/valentysarquitectura/angularjs_web_seedproject.git
+rm -rf https://dmunozgaete@bitbucket.org/valentysarquitectura/angularjs_rest_seedproject.git
 ```
 
 Ahora que tenemos nuestro proyecto clonado en el repositorio de git (bitbucket) , comenzaremos configurando una rama local para nuestro desarrollo:
@@ -92,7 +92,7 @@ cd /direccion/de/nuestro/nuevo/proyecto
 git init
 
 # Añadimos la referencia remota (dirección .git)
-git remote add origin https://dmunozgaete@bitbucket.org/valentysarquitectura/{nuevo-repositorio}.git
+git remote add origin https://dmunozgaete@bitbucket.org/{team}/{nuevo-repositorio}.git
 
 # Descargamos todo el contenido remoto de la rama a nuestra maquina
 git pull
