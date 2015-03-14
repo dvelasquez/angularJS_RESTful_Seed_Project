@@ -1,5 +1,7 @@
 <link href="https://stackedit.io/res-min/themes/base.css" rel="stylesheet"></link>
 
+d
+
 # Proyecto Semilla: __AngularJS__ + __API .NET__  (_Swagger Doc's_)
 
 El principal objetivo de este proyecto es entregar una plantilla semilla que se usará como base para cualquier proyecto a realizar en __AngularJS__ sobre un navegador web de escritorio, para lograr optimizar los tiempos y reducir la brecha de error en las tareas repetitivas que deben ser ejecutadas constantemente dentro del ciclo de vida de un proyecto. 
