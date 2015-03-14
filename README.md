@@ -101,7 +101,7 @@ git pull
 # Finalmente, establecemos la rama con la cual trabajaremos
 git checkout master
 ```
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 ## Ejecutando nuestro ambiente de desarollo:
 
 Para depurar y realizar pruebas de usuarios, Es común y muy util tener un servidor web HTTP. Para este proposito se encuentra disponible un servidor web local basado en Node.js que permite entre otras cosas servidor como herramienta de depuración para los desarrollos a ralizar.
@@ -118,7 +118,7 @@ cd Web/
 # Finalmente levantamos el servidor web
 grunt lift
 ```
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 ## Direcciones de la  API y Documentación (_Swagger_ Specification)
 
 #  | Url
