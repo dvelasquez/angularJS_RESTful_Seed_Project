@@ -7,9 +7,8 @@ El principal objetivo de este proyecto es entregar una plantilla semilla que se 
 
 1. API
       * [RESTful Protocol](https://msdn.microsoft.com/en-us/library/dd203052.aspx)
-      * C#
       * [Swagger 2.0 Specification](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md),[Implementation](https://github.com/domaindrivendev/Swashbuckle)
-      * Karma Framework
+      * Karma Framework (C#)
       * [Json Web Token](http://angular-tips.com/blog/2014/05/json-web-tokens-introduction/) , [RFC](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)
 
  2. Web
