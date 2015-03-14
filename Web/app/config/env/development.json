@@ -1,0 +1,6 @@
+{
+	"endpoint": "http://val-demos.cloudapp.net:81/Auxilia/Asistencia.Web/API",
+	"debugging": true,
+	
+	"App.DEFAULT_SYNC_TIME": 60000
+}
