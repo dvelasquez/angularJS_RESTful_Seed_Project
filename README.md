@@ -1,3 +1,5 @@
+<link href="https://stackedit.io/res-min/themes/base.css" rel="stylesheet"></link>
+
 # Proyecto Semilla: __AngularJS__ + __API .NET__  (_Swagger Doc's_)
 
 El principal objetivo de este proyecto es entregar una plantilla semilla que se usará como base para cualquier proyecto a realizar en __AngularJS__ sobre un navegador web de escritorio, para lograr optimizar los tiempos y reducir la brecha de error en las tareas repetitivas que deben ser ejecutadas constantemente dentro del ciclo de vida de un proyecto. 
@@ -27,13 +29,12 @@ El principal objetivo de este proyecto es entregar una plantilla semilla que se 
 
 _(Omitir este paso si ya has configurado previamente un ambiente de desarrollo para otro proyecto)._
 
-Antes de comenzar a configurar el ambiente de desarrollo son necesarias las siguientes dependencias (En ese orden):
+Antes de comenzar a configurar el ambiente de desarrollo son necesarias las siguientes dependencias (En el orden presentado):
 
 1. API
+      * [Microsoft .NET 4.5](http://www.microsoft.com/es-cl/download/details.aspx?id=30653): Framework de Trabajo .NET y principal dependencia para el ambiente de desarrollo (Visual Studio).
 
       * [SQL Server 2008](http://www.microsoft.com/es-cl/download/details.aspx?id=29062): Motor de base de datos , que usará la API Restful.
-
-      * [Microsoft .NET 4.5](http://www.microsoft.com/es-cl/download/details.aspx?id=30653): Framework de Trabajo .NET y principal dependencia para el ambiente de desarrollo (Visual Studio).
 
 2. Web
       * [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git): Control de versiones de para nuestro proyecto... solo con esa descripción basta...
@@ -43,6 +44,7 @@ Antes de comenzar a configurar el ambiente de desarrollo son necesarias las sigu
       * [Grunt](http://gruntjs.com/): Nuestro principal caballito de batalla en la __automatización de los procesos__ monótonos como la reducción , unificación y ofuscación de archivos, así como también la de proveernos en una sola linea la configuración y creación del servidor web que usaremos para el desarrollo.
 
       * [Bower](http://bower.io/): El administrador de tareas de nuestra aplicación web  __AngularJS__ , y que nos permitirá administrar las librerías (__bundles__) que necesitemos usar en la creación de nuestra aplicación , _(google-map, angular-material,angular-ui-route, etc., en resumen ya no necesitaremos buscar los componentes o librerías externas nunca mas)_
+
 ```shell
 #Instalamos Grunt de forma global
 npm install -g grunt-cli
@@ -50,52 +52,52 @@ npm install -g grunt-cli
 #Hacemos lo mismo con Bower
 npm install -g bower
 
-#Vemos si existe alguna actualización de los paquetes de nodeJS
+#Actualizamos los paquetes de NodeJS
 npm update
 
-#Vemos si existe alguna actualización de los paquetes de Bower
+#Actualzamos los paquetes de Bower
 bower update
 ```
 
 __Nota__: Estos comandos deben ser usados bajo la función sudo (for OSX, *nix, BSD etc) o desde una linea de comandos como Administrator (Windows) para instalar __Grunt__ & __Bower__ globalmente
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
 
 ## Configurando el ambiente de desarrollo:
 
-Una vez instaladas las dependencias bases para nuestra plantilla, podemos comenzar a configurar un ambiente de desarrollo para el proyecto a desarrollar.
+Una vez instaladas las dependencias bases para nuestra plantilla, podemos comenzar a configurar un ambiente de desarrollo para el nuestro proyecto.
 
-Comenzaremos Clonando este repositorio en el repositorio del nuevo proyecto (repositorio del nuevo proyecto):
+Comenzaremos clonando este repositorio en el repositorio del nuevo proyecto:
 
 ```shell
-# Hacemos una copia simple del repositorio (Make a bare clone of the repository)
+# Hacemos una copia simple del repositorio (bare clone)
 git clone --bare https://dmunozgaete@bitbucket.org/valentysarquitectura/angularjs_web_seedproject.git
 
-# Enviamos el contenido clonado en el nuevo repositorio (Mirror-push to the new repository)
+# Enviamos el contenido clonado al nuevo repositorio (mirror-push)
 cd angularjs_web_seedproject.git
-git push --mirror https://dmunozgaete@bitbucket.org/valentysarquitectura/{nuevo-repositorio}.git
+git push --mirror https://dmunozgaete@bitbucket.org/{team}/{nuevo-repositorio}.git
 
-# Limpiamos eliminando la copia simple del directorio (Remove our temporary local repository)
+# Limpiamos un poco eliminando la copia simple del directorio (Remove our temporary local repository)
 cd ..
 rm -rf https://dmunozgaete@bitbucket.org/valentysarquitectura/angularjs_web_seedproject.git
 ```
 
-Ahora que tenemos nuestro proyecto clonado en el repositorio de git (bitbucket) , comencemos configurando una rama local para nuestro desarrollo:
+Ahora que tenemos nuestro proyecto clonado en el repositorio de git (bitbucket) , comenzaremos configurando una rama local para nuestro desarrollo:
 
 ```shell
-# Creamos una carpeta que contendrá nuestro repositorio
-mkdir /direccion/del/proyecto
+# Creamos una carpeta local que contendrá nuestro repositorio
+mkdir /direccion/de/nuestro/nuevo/proyecto
 
 # Localizamos nuestro terminal en la carpeta del proyecto
-cd/direccion/del/proyecto
+cd /direccion/de/nuestro/nuevo/proyecto
 
 # Iniciamos Git en la dirección que contendrá nuestro nuevo repositorio
 git init
 
-# Añadimos la referencia remota
+# Añadimos la referencia remota (dirección .git)
 git remote add origin https://dmunozgaete@bitbucket.org/valentysarquitectura/{nuevo-repositorio}.git
 
-# Descargamos el contenido de la rama a nuestra maquina
+# Descargamos todo el contenido remoto de la rama a nuestra maquina
 git pull
 
 # Finalmente, establecemos la rama con la cual trabajaremos
@@ -104,22 +106,23 @@ git checkout master
 --------------------------------------------------------------------------------------------------------------------------------------
 ## Ejecutando nuestro ambiente de desarollo:
 
-Para depurar y realizar pruebas de usuarios, Es común y muy util tener un servidor web HTTP. Para este proposito se encuentra disponible un servidor web local basado en Node.js que permite entre otras cosas servidor como herramienta de depuración para los desarrollos a ralizar.
+Para depurar y realizar pruebas de usuarios, Es común y muy util tener un servidor web HTTP. Para este proposito se encuentra disponible un servidor web local basado en Node.js que permite entre otras cosas servir como herramienta de depuración para los desarrollos a realizar.
 
-A continuación se muestra su inicialización:
+Para ejecutarlo realizaremos lo siguiente:
 
 ```shell
 # Localizamos nuestro terminal en la carpeta del proyecto
-cd/direccion/del/proyecto/
+cd /direccion/de/nuestro/nuevo/proyecto
 
-# Nos dirigimos al sitio web
+# Nos dirigimos a la carpeta web donde se encuentra nuestro sitio
 cd Web/
 
 # Finalmente levantamos el servidor web
-grunt lift
+grunt lift --open-browser
 ```
+
 --------------------------------------------------------------------------------------------------------------------------------------
-## Direcciones de la  API y Documentación (_Swagger_ Specification)
+## Direcciones de la  API y Documentación (_Swagger Specification_)
 
 #  | Url
 ------------------------------ | ---------------------------------------------------------------------------------
