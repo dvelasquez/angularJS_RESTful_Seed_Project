@@ -95,8 +95,11 @@ git init
 # Añadimos la referencia remota
 git remote add origin https://dmunozgaete@bitbucket.org/valentysarquitectura/{nuevo-repositorio}.git
 
-# Finalmente, descargamos el contenido de la rama a nuestra maquina
+# Descargamos el contenido de la rama a nuestra maquina
 git pull
+
+# Finalmente, establecemos la rama con la cual trabajaremos
+git checkout master
 ```
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Ejecutando nuestro ambiente de desarollo:
