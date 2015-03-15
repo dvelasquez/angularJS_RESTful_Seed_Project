@@ -1,6 +1,6 @@
 # Proyecto Semilla: __AngularJS__ + __API REST__  (_Swagger Doc's_)
 
-El principal objetivo de este proyecto es entregar una plantilla semilla que se usará como base para cualquier proyecto a realizar en __AngularJS__ sobre un cliente web (escritoio o móvil), para lograr optimizar los tiempos y reducir la brecha de error en las tareas repetitivas que deben ser ejecutadas constantemente dentro del ciclo de vida de un proyecto. 
+El principal objetivo de este proyecto es entregar una plantilla semilla que se usará como base para cualquier proyecto a realizar en __AngularJS__ sobre un cliente web (escritorio o móvil), para lograr optimizar los tiempos y reducir la brecha de error en las tareas repetitivas que deben ser ejecutadas constantemente dentro del ciclo de vida de un proyecto. 
 
 ---------------------------------------------------------------------------------------------------------------------------------
 ## Componentes:
