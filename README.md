@@ -114,6 +114,9 @@ cd /direccion/de/nuestro/nuevo/proyecto
 # Nos dirigimos a la carpeta web donde se encuentra nuestro sitio
 cd Web/
 
+# Regeneramos el ambiente de desarrollo (Puede demorarse un poco)
+sudo npm install
+
 # Finalmente levantamos el servidor web
 grunt lift --open-browser
 ```
