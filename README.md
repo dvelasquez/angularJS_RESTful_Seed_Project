@@ -11,11 +11,11 @@ El principal objetivo de este proyecto es entregar una plantilla semilla que se 
       * Karma Framework (C#)
       * [Json Web Token](http://angular-tips.com/blog/2014/05/json-web-tokens-introduction/) , [RFC](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)
 
- 2. Web
+2. Web
       * [AngularJS](https://angularjs.org/)
       * [Material Design](https://material.angularjs.org/#/)
 
- 3. Móvil
+3. Móvil
       * [Ionic Framework](http://ionicframework.com/)
       * [AngularJS](https://angularjs.org/)
       * [Phonegap](http://phonegap.com/)
