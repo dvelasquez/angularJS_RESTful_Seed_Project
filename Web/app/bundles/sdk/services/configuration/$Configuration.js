@@ -4,19 +4,19 @@ angular.module('sdk.services.configuration')
     var _values             = {};
 
     //LOAD THE INITIAL CONFIGURATION
-    for(var name in ENVIRONMENT_CONFIGURATION){
-        set(name, ENVIRONMENT_CONFIGURATION[name]);
+    for(var env_name in ENVIRONMENT_CONFIGURATION){
+        set(env_name, ENVIRONMENT_CONFIGURATION[env_name]);
     }
 
-    for(var name in GLOBAL_CONFIGURATION){
-        set(name, GLOBAL_CONFIGURATION[name]);
+    for(var cfg_name in GLOBAL_CONFIGURATION){
+        set(cfg_name, GLOBAL_CONFIGURATION[cfg_name]);
     }
     
     function get(name, defaultValue){
         var v = _values[name]; 
-        if(typeof v == undefined){
+        if(typeof v === undefined){
             if(defaultValue){
-                return defaultValue
+                return defaultValue;
             }
             throw Error(name + " don't exists in configuration");
         }
@@ -34,5 +34,5 @@ angular.module('sdk.services.configuration')
     return {
         get: get,
         exists: exists
-    }
+    };
 });

@@ -9,8 +9,8 @@ angular.module('sdk.directives', [])
         require: 'ngModel',
         link: function(scope, elem, attrs, ctrl) {
             
-            var min = parseInt(attrs["min"]);
-            var max = parseInt(attrs["max"]);
+            var min = parseInt(attrs.min);
+            var max = parseInt(attrs.max);
 
             ctrl.$validators.range = function(modelValue, viewValue) {
 
@@ -54,5 +54,5 @@ angular.module('sdk.directives', [])
             };
 
         }
-    }
-})
+    };
+});

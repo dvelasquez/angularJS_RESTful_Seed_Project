@@ -11,6 +11,7 @@ module.exports = function(grunt, options) {
     return {
 		server: {
 	        options: {
+	        	open:options.openBrowser,
 	            livereload:true,
 	            base: options.server.path,
 	            port: options.server.port,

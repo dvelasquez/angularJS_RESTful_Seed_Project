@@ -21,7 +21,7 @@
             }*/
         };
         
-        cfg[(method == "GET" ? "params": "data")] = body;
+        cfg[(method === "GET" ? "params": "data")] = body;
 
         $log.debug("["+method+" " + url + "] parameters: " , body);
 
@@ -43,6 +43,6 @@
     return {
         get_endpoint: get_endpoint,
         invoke: invoke
-    }
+    };
 
 });

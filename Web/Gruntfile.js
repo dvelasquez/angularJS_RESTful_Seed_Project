@@ -17,6 +17,7 @@ module.exports = function(grunt) {
                 email: 'dmunozgaete@gmail.com'
             },
             livereload: !grunt.option('no-livereload'),
+            openBrowser: grunt.option('open-browser'),
             rebuild_dependencies: grunt.option('rebuild-dependencies')
         }
     };

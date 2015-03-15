@@ -23,5 +23,5 @@
         exists: function (name){
              return $window.localStorage[key] != null;
         }
-    }
+    };
 });

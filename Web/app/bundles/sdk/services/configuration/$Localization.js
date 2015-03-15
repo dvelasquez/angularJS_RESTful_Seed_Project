@@ -4,9 +4,9 @@ angular.module('sdk.services.configuration')
 
 	function get(name, defaultValue){
         var v = RESOURCES[name]; 
-        if(typeof v == undefined){
+        if(typeof v === undefined){
             if(defaultValue){
-                return defaultValue
+                return defaultValue;
             }
             throw Error(name + " don't exists in resources");
         }
@@ -20,6 +20,6 @@ angular.module('sdk.services.configuration')
     return {
         get: get,
         exists: exists
-    }
+    };
 
 });

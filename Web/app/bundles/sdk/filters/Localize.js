@@ -17,7 +17,7 @@ angular.module('sdk.filters')
             return template;
 
 		}catch(e){
-			return text
+			return text;
 		}
 	};
 });

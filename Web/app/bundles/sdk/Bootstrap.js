@@ -7,8 +7,8 @@ angular.$createBundle = function(bundle, namespaces){
     });
 
     //CREATE ANGULAR MODULE
-    return angular.module(bundle, namespaces)
-}
+    return angular.module(bundle, namespaces);
+};
 
 //Package Bundle
 angular.$createBundle('sdk', [
@@ -32,13 +32,13 @@ angular.$createBundle('sdk', [
     if(conf){
         
         //check version configuration , if old , broadcast a changeVersion event;
-        if(conf.version != fullVersion || conf.environment != GLOBAL_CONFIGURATION.environment){
+        if(conf.version !== fullVersion || conf.environment !== GLOBAL_CONFIGURATION.environment){
 
             $log.debug("a new configuration version is available, calling [on_build_new_version] if exist's !", GLOBAL_CONFIGURATION.version); //Show only in debug mode
 
-            if(angular.isFunction(GLOBAL_CONFIGURATION["on_build_new_version"])){
+            if(angular.isFunction(GLOBAL_CONFIGURATION.on_build_new_version)){
                 try{
-                    GLOBAL_CONFIGURATION["on_build_new_version"](fullVersion , conf.version );
+                    GLOBAL_CONFIGURATION.on_build_new_version(fullVersion , conf.version );
 
                     conf.version = fullVersion;
                     conf.environment = GLOBAL_CONFIGURATION.environment;
@@ -60,11 +60,9 @@ angular.$createBundle('sdk', [
         });
     }
 
-
-
 })
 
-.config(['$logProvider', function($logProvider, $injector){
+.config(['$logProvider', function($logProvider){
     var $injector = angular.injector(['ng', 'sdk.services.configuration']);
     var ENVIRONMENT_CONFIGURATION = $injector.get('ENVIRONMENT_CONFIGURATION');
     $logProvider.debugEnabled(ENVIRONMENT_CONFIGURATION.debugging||false);
@@ -113,5 +111,4 @@ angular.element(document).ready(function() {
         throw Error("Can't get configuration file (config/env/" + environment + ".json)");
     });
     //--------------------------------------------------------------------------------------------------------------------
-
-})
+});

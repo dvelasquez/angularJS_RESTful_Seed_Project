@@ -17,7 +17,7 @@ angular.module('sdk.services')
             self.query(query);
             $log.debug('Table ' + table.name + ' initialized');
         });
-    }
+    };
 
     var clearSchema = function(){
         angular.forEach(DB_CONFIG.tables, function(table) {
@@ -26,12 +26,12 @@ angular.module('sdk.services')
             self.query(query);
             $log.debug('Table ' + table.name + ' dropped');
         });
-    }
+    };
 
     self.clearSchema  = function(){
         clearSchema();
-        createSchema()
-    }
+        createSchema();
+    };
 
     self.init = function() {
         // Use self.db = window.sqlitePlugin.openDatabase({name: DB_CONFIG.name}); in production
@@ -66,7 +66,7 @@ angular.module('sdk.services')
                 values.push(data[i][columns[j]]);
             }
 
-            self.query(sql, values).success(function(){})
+            self.query(sql, values).success(function(){});
         }
     };
 
@@ -128,13 +128,12 @@ angular.module('sdk.services')
                 for(var pair in bindings){
                     _values.push(bindings[pair]);
 
-                };
-
+                }
                 
                 transaction.executeSql(query, _values, 
                     function(){
 
-                        if(count == values.length){
+                        if(count === values.length){
                             deferred.resolve();
                         }
 
@@ -167,4 +166,4 @@ angular.module('sdk.services')
     };
  
     return self;
-})
+});
