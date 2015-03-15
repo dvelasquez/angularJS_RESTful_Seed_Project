@@ -67,7 +67,7 @@ Comenzaremos clonando este repositorio en el repositorio del nuevo proyecto:
 
 ```shell
 # Hacemos una copia simple del repositorio (bare clone)
-git clone --bare https://dmunozgaete@bitbucket.org/valentysarquitectura/angularjs_rest_seedproject.git
+git clone --bare https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project.git
 
 # Enviamos el contenido clonado al nuevo repositorio (mirror-push)
 cd angularjs_rest_seedproject.git
@@ -75,7 +75,7 @@ git push --mirror https://dmunozgaete@bitbucket.org/{team}/{nuevo-repositorio}.g
 
 # Limpiamos un poco eliminando la copia simple del directorio (Remove our temporary local repository)
 cd ..
-rm -rf https://dmunozgaete@bitbucket.org/valentysarquitectura/angularjs_rest_seedproject.git
+rm -rf https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project.git
 ```
 
 Ahora que tenemos nuestro proyecto clonado en el repositorio de git (bitbucket) , comenzaremos configurando una rama local para nuestro desarrollo:
