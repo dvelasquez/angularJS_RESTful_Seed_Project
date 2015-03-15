@@ -34,7 +34,7 @@ Antes de comenzar a configurar el ambiente de desarrollo son necesarias las sigu
       * [SQL Server 2008](http://www.microsoft.com/es-cl/download/details.aspx?id=29062): Motor de base de datos , que usará la API Restful.
 
 2. Web
-      * [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git): Control de versiones de para nuestro proyecto... solo con esa descripción basta...
+      * [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git): Control de versiones para nuestro proyecto... solo con esa descripción basta...
 
       * [Node.js](https://nodejs.org/): Administrador de paquetes , y contiene las funcionalidades mas importante para la optimización de los tiempos de desarrollo. (Descargar desde el [enlace](https://nodejs.org/))
 
