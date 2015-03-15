@@ -121,7 +121,7 @@ sudo npm install
 grunt lift --open-browser
 ```
 
-\* __[Información](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki)
+\* __[Información](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki/Lift-Command)
 :__ Para mayor información de los comandos disponibles , consulta nuestra [Wiki](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki)
 
 ----------------------------------------------------------------------------------------------
