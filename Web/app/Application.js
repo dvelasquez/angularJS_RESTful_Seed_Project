@@ -16,7 +16,7 @@
     //RESTRICT ACCESS TO LOGIN USER'S ONLY
     $rootScope.$on('$stateChangeStart', function (event, toState) {
        
-        if ( (toState.name == "services" || toState.name == "services-details") && !$Profile.isAuthenticated()) {
+        if ( (toState.name === "services" || toState.name === "services-details") && !$Profile.isAuthenticated()) {
             $state.go('enrollment-step-1');
             event.preventDefault();
         }
@@ -111,7 +111,6 @@
         controller: 'ServiceSuccessController'
     })
 
-
     .state('service-description', {
         url: '/services/description/:token',
         templateUrl: 'views/service/service-description.html',
@@ -122,7 +121,7 @@
         url: '/account',
         templateUrl: 'views/account/index.html',
         controller: 'AccountController'
-    })
+    });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise("/enrollment/step-1");
