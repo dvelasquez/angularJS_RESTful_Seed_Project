@@ -121,7 +121,8 @@ sudo npm install
 grunt lift --open-browser
 ```
 
-\*__(Tip:)__ Para mayor información de los comandos disponibles , consulta nuestra [Wiki](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki)
+\*__[Wiki](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki)
+:__ Para mayor información de los comandos disponibles , consulta nuestra [Wiki](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki)
 
 ----------------------------------------------------------------------------------------------
 ## Direcciones de la  API y Documentación (_Swagger Specification_)
