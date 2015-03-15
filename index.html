@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Angularjs restful seed project by dmunozgaete</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Angularjs restful seed project</h1>
+        <h2>Plantilla semilla (AngularJS + Angular Material ) + (API RESTful + Karma Framework (C#)  + Swagger Specification)</h2>
+        <a href="https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="proyecto-semilla-angularjs--api-rest--swagger-docs" class="anchor" href="#proyecto-semilla-angularjs--api-rest--swagger-docs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proyecto Semilla: <strong>AngularJS</strong> + <strong>API REST</strong>  (<em>Swagger Doc's</em>)</h1>
+
+<p>El principal objetivo de este proyecto es entregar una plantilla semilla que se usará como base para cualquier proyecto a realizar en <strong>AngularJS</strong> sobre un cliente web (escritorio o móvil), para lograr optimizar los tiempos y reducir la brecha de error en las tareas repetitivas que deben ser ejecutadas constantemente dentro del ciclo de vida de un proyecto. </p>
+
+<hr>
+
+<h2>
+<a id="componentes" class="anchor" href="#componentes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Componentes:</h2>
+
+<ol>
+<li>
+<p>API</p>
+
+<ul>
+<li><a href="https://msdn.microsoft.com/en-us/library/dd203052.aspx">RESTful Protocol</a></li>
+<li>
+<a href="https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md">Swagger 2.0 Specification</a>,<a href="https://github.com/domaindrivendev/Swashbuckle">Implementation</a>
+</li>
+<li>Karma Framework (C#)</li>
+<li>
+<a href="http://angular-tips.com/blog/2014/05/json-web-tokens-introduction/">Json Web Token</a> , <a href="http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">RFC</a>
+</li>
+</ul>
+
+<ol>
+<li>
+<p>Web</p>
+
+<ul>
+<li><a href="https://angularjs.org/">AngularJS</a></li>
+<li><a href="https://material.angularjs.org/#/">Material Design</a></li>
+</ul>
+</li>
+<li>
+<p>Móvil</p>
+
+<ul>
+<li><a href="http://ionicframework.com/">Ionic Framework</a></li>
+<li><a href="https://angularjs.org/">AngularJS</a></li>
+<li><a href="http://phonegap.com/">Phonegap</a></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+<hr>
+
+<h2>
+<a id="instalando-las-dependencias--para-el-ambiente-de-desarrollo" class="anchor" href="#instalando-las-dependencias--para-el-ambiente-de-desarrollo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instalando las Dependencias  para el Ambiente de Desarrollo:</h2>
+
+<p><em>(Omitir este paso si ya has configurado previamente un ambiente de desarrollo para otro proyecto).</em></p>
+
+<p>Antes de comenzar a configurar el ambiente de desarrollo son necesarias las siguientes dependencias (En el orden presentado):</p>
+
+<ol>
+<li>
+<p>API</p>
+
+<ul>
+<li><p><a href="http://www.microsoft.com/es-cl/download/details.aspx?id=30653">Microsoft .NET 4.5</a>: Framework de Trabajo .NET y principal dependencia para el ambiente de desarrollo (Visual Studio).</p></li>
+<li><p><a href="http://www.microsoft.com/es-cl/download/details.aspx?id=29062">SQL Server 2008</a>: Motor de base de datos , que usará la API Restful.</p></li>
+</ul>
+</li>
+<li>
+<p>Web</p>
+
+<ul>
+<li><p><a href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a>: Control de versiones de para nuestro proyecto... solo con esa descripción basta...</p></li>
+<li><p><a href="https://nodejs.org/">Node.js</a>: Administrador de paquetes , y contiene las funcionalidades mas importante para la optimización de los tiempos de desarrollo. (Descargar desde el <a href="https://nodejs.org/">enlace</a>)</p></li>
+<li><p><a href="http://gruntjs.com/">Grunt</a>: Nuestro principal caballito de batalla en la <strong>automatización de los procesos</strong> monótonos como la reducción , unificación y ofuscación de archivos, así como también la de proveernos en una sola linea la configuración y creación del servidor web que usaremos para el desarrollo.</p></li>
+<li><p><a href="http://bower.io/">Bower</a>: El administrador de tareas de nuestra aplicación web  <strong>AngularJS</strong> , y que nos permitirá administrar las librerías (<strong>bundles</strong>) que necesitemos usar en la creación de nuestra aplicación , <em>(google-map, angular-material,angular-ui-route, etc., en resumen ya no necesitaremos buscar los componentes o librerías externas nunca mas)</em></p></li>
+</ul>
+</li>
+</ol>
+
+<div class="highlight highlight-shell"><pre><span class="pl-c">#Instalamos Grunt de forma global</span>
+npm install -g grunt-cli
+
+<span class="pl-c">#Hacemos lo mismo con Bower</span>
+npm install -g bower
+
+<span class="pl-c">#Actualizamos los paquetes de NodeJS</span>
+npm update
+
+<span class="pl-c">#Actualzamos los paquetes de Bower</span>
+bower update</pre></div>
+
+<p><strong>Nota</strong>: Estos comandos deben ser usados bajo la función sudo (for OSX, *nix, BSD etc) o desde una linea de comandos como Administrator (Windows) para instalar <strong>Grunt</strong> &amp; <strong>Bower</strong> globalmente</p>
+
+<hr>
+
+<h2>
+<a id="configurando-el-ambiente-de-desarrollo" class="anchor" href="#configurando-el-ambiente-de-desarrollo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configurando el ambiente de desarrollo:</h2>
+
+<p>Una vez instaladas las dependencias bases para nuestra plantilla, podemos comenzar a configurar un ambiente de desarrollo para el nuestro proyecto.</p>
+
+<p>Comenzaremos clonando este repositorio en el repositorio del nuevo proyecto:</p>
+
+<div class="highlight highlight-shell"><pre><span class="pl-c"># Hacemos una copia simple del repositorio (bare clone)</span>
+git clone --bare https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project.git
+
+<span class="pl-c"># Enviamos el contenido clonado al nuevo repositorio (mirror-push)</span>
+<span class="pl-s3">cd</span> angularjs_rest_seedproject.git
+git push --mirror https://dmunozgaete@bitbucket.org/{team}/{nuevo-repositorio}.git
+
+<span class="pl-c"># Limpiamos un poco eliminando la copia simple del directorio (Remove our temporary local repository)</span>
+<span class="pl-s3">cd</span> ..
+rm -rf https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project.git</pre></div>
+
+<p>Ahora que tenemos nuestro proyecto clonado en el repositorio de git (bitbucket) , comenzaremos configurando una rama local para nuestro desarrollo:</p>
+
+<div class="highlight highlight-shell"><pre><span class="pl-c"># Creamos una carpeta local que contendrá nuestro repositorio</span>
+mkdir /direccion/de/nuestro/nuevo/proyecto
+
+<span class="pl-c"># Localizamos nuestro terminal en la carpeta del proyecto</span>
+<span class="pl-s3">cd</span> /direccion/de/nuestro/nuevo/proyecto
+
+<span class="pl-c"># Iniciamos Git en la dirección que contendrá nuestro nuevo repositorio</span>
+git init
+
+<span class="pl-c"># Añadimos la referencia remota (dirección .git)</span>
+git remote add origin https://dmunozgaete@bitbucket.org/{team}/{nuevo-repositorio}.git
+
+<span class="pl-c"># Descargamos todo el contenido remoto de la rama a nuestra maquina</span>
+git pull
+
+<span class="pl-c"># Finalmente, establecemos la rama con la cual trabajaremos</span>
+git checkout master</pre></div>
+
+<hr>
+
+<h2>
+<a id="ejecutando-nuestro-ambiente-de-desarollo" class="anchor" href="#ejecutando-nuestro-ambiente-de-desarollo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ejecutando nuestro ambiente de desarollo:</h2>
+
+<p>Para depurar y realizar pruebas de usuarios, Es común y muy util tener un servidor web HTTP. Para este proposito se encuentra disponible un servidor web local basado en Node.js que permite entre otras cosas servir como herramienta de depuración para los desarrollos a realizar.</p>
+
+<p>Para ejecutarlo realizaremos lo siguiente:</p>
+
+<div class="highlight highlight-shell"><pre><span class="pl-c"># Localizamos nuestro terminal en la carpeta del proyecto</span>
+<span class="pl-s3">cd</span> /direccion/de/nuestro/nuevo/proyecto
+
+<span class="pl-c"># Nos dirigimos a la carpeta web donde se encuentra nuestro sitio</span>
+<span class="pl-s3">cd</span> Web/
+
+<span class="pl-c"># Finalmente levantamos el servidor web</span>
+grunt lift --open-browser</pre></div>
+
+<hr>
+
+<h2>
+<a id="direcciones-de-la--api-y-documentación-swagger-specification" class="anchor" href="#direcciones-de-la--api-y-documentaci%C3%B3n-swagger-specification" aria-hidden="true"><span class="octicon octicon-link"></span></a>Direcciones de la  API y Documentación (<em>Swagger Specification</em>)</h2>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Url</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API Url</td>
+<td>
+<em>$(ProjectUrl)</em> <strong>/v1</strong>
+</td>
+</tr>
+<tr>
+<td>Swagger API doc's</td>
+<td>
+<em>$(ProjectUrl)</em> <strong>/swagger/</strong>
+</td>
+</tr>
+<tr>
+<td>Swagger Specification</td>
+<td>
+<em>$(ProjectUrl)</em> <strong>/swagger/docs/v1</strong>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>$(ProjectUrl)</strong>* : <em>Dirección Url donde se publicara el sistema</em>" rel="stylesheet"&gt;</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project"></a> is maintained by <a href="https://github.com/dmunozgaete">dmunozgaete</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
