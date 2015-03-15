@@ -127,4 +127,4 @@ API Url                        | _$(ProjectUrl)_ **/v1**
 Swagger API doc's              | _$(ProjectUrl)_ **/swagger/**
 Swagger Specification          | _$(ProjectUrl)_ **/swagger/docs/v1**
 
-__$(ProjectUrl)__\* : _Dirección Url donde se publicara el sistema_" rel="stylesheet"></link>
+__$(ProjectUrl)__\* : _Dirección Url donde se publicara el sistema_
