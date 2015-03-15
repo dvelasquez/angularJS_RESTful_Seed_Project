@@ -7,8 +7,8 @@ angular.$createBundle = function(bundle, namespaces){
     });
 
     //CREATE ANGULAR MODULE
-    return angular.module(bundle, namespaces)
-}
+    return angular.module(bundle, namespaces);
+};
 
 //Package Bundle
 angular.$createBundle('sdk', [
@@ -32,13 +32,13 @@ angular.$createBundle('sdk', [
     if(conf){
         
         //check version configuration , if old , broadcast a changeVersion event;
-        if(conf.version != fullVersion || conf.environment != GLOBAL_CONFIGURATION.environment){
+        if(conf.version !== fullVersion || conf.environment !== GLOBAL_CONFIGURATION.environment){
 
             $log.debug("a new configuration version is available, calling [on_build_new_version] if exist's !", GLOBAL_CONFIGURATION.version); //Show only in debug mode
 
-            if(angular.isFunction(GLOBAL_CONFIGURATION["on_build_new_version"])){
+            if(angular.isFunction(GLOBAL_CONFIGURATION.on_build_new_version)){
                 try{
-                    GLOBAL_CONFIGURATION["on_build_new_version"](fullVersion , conf.version );
+                    GLOBAL_CONFIGURATION.on_build_new_version(fullVersion , conf.version );
 
                     conf.version = fullVersion;
                     conf.environment = GLOBAL_CONFIGURATION.environment;
@@ -60,11 +60,9 @@ angular.$createBundle('sdk', [
         });
     }
 
-
-
 })
 
-.config(['$logProvider', function($logProvider, $injector){
+.config(['$logProvider', function($logProvider){
     var $injector = angular.injector(['ng', 'sdk.services.configuration']);
     var ENVIRONMENT_CONFIGURATION = $injector.get('ENVIRONMENT_CONFIGURATION');
     $logProvider.debugEnabled(ENVIRONMENT_CONFIGURATION.debugging||false);
@@ -113,8 +111,7 @@ angular.element(document).ready(function() {
         throw Error("Can't get configuration file (config/env/" + environment + ".json)");
     });
     //--------------------------------------------------------------------------------------------------------------------
-
-});angular.module('sdk.directives')
+});;angular.module('sdk.directives')
 
 .directive('selectTextOnClick', function () {
     return {
@@ -156,8 +153,8 @@ angular.module('sdk.directives', [])
         require: 'ngModel',
         link: function(scope, elem, attrs, ctrl) {
             
-            var min = parseInt(attrs["min"]);
-            var max = parseInt(attrs["max"]);
+            var min = parseInt(attrs.min);
+            var max = parseInt(attrs.max);
 
             ctrl.$validators.range = function(modelValue, viewValue) {
 
@@ -201,69 +198,71 @@ angular.module('sdk.directives', [])
             };
 
         }
-    }
-});/**
+    };
+});;/**
  * Created by Administrador on 26/08/14.
  */
 angular.module('sdk.directives', [])
-    .directive('ngRut', function() {
-        return {
-            restrict: 'A',
-            require: 'ngModel',
-            link: function(scope, elem, attr, ctrl) {
+.directive('ngRut', function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, elem, attr, ctrl) {
 
-                var validaRut = function (rutCompleto) {
-                    var tmp = [];
+            var validaRut = function (rutCompleto) {
+                var tmp = [];
 
-                    if(rutCompleto.indexOf("-") > 0){
-                        if (!/^[0-9]+-[0-9kK]{1}$/.test( rutCompleto )) return false;
-                        tmp = rutCompleto.split('-');
-                    }else{
-                        //Sin Guion
-                        var rut = rutCompleto.replace("-", "");
-
-                        tmp.push(rut.substring(0, rut.length-1));
-                        tmp.push(rut.substring(rut.length-1));
-
-                    }
-                    if(tmp.length<2){
+                if(rutCompleto.indexOf("-") > 0){
+                    if (!/^[0-9]+-[0-9kK]{1}$/.test( rutCompleto )){
                         return false;
                     }
+                    tmp = rutCompleto.split('-');
+                }else{
+                    //Sin Guion
+                    var rut = rutCompleto.replace("-", "");
 
-                    return (dv(tmp[0])) == tmp[1].toLowerCase();
+                    tmp.push(rut.substring(0, rut.length-1));
+                    tmp.push(rut.substring(rut.length-1));
+
                 }
-
-                var dv  = function(T){
-                    var M=0,S=1;
-                    for(;T;T=Math.floor(T/10)){
-                        S=(S+T%10*(9-M++%6))%11;
-                    }
-                    return S?S-1:'k';
-                }
-
-                ctrl.$validators.rut = function(modelValue, viewValue) {
-                    if (ctrl.$isEmpty(modelValue)) {
-                      // consider empty models to be valid
-                      return true;
-                    }
-
-                    if (ctrl.$isEmpty(viewValue)) {
-                        //is View Value is empty
-                        return false;
-                    }
-
-                    if (validaRut(viewValue)) {
-                        // it is valid
-                        return true;
-                    }
-
-                    // it is invalid
+                if(tmp.length<2){
                     return false;
-                };
+                }
 
-            }
+                return (dv(tmp[0])) === tmp[1].toLowerCase();
+            };
+
+            var dv  = function(T){
+                var M=0,S=1;
+                for(;T;T=Math.floor(T/10)){
+                    S=(S+T%10*(9-M++%6))%11;
+                }
+                return S?S-1:'k';
+            };
+
+            ctrl.$validators.rut = function(modelValue, viewValue) {
+                if (ctrl.$isEmpty(modelValue)) {
+                  // consider empty models to be valid
+                  return true;
+                }
+
+                if (ctrl.$isEmpty(viewValue)) {
+                    //is View Value is empty
+                    return false;
+                }
+
+                if (validaRut(viewValue)) {
+                    // it is valid
+                    return true;
+                }
+
+                // it is invalid
+                return false;
+            };
+
         }
-    });angular.module('sdk.filters')	
+    };
+});;angular.module('sdk.filters')	
 
 .filter('Localize', function ($Localization, $log, $interpolate) {
 	return function (text, parameters) {
@@ -282,7 +281,7 @@ angular.module('sdk.directives', [])
             return template;
 
 		}catch(e){
-			return text
+			return text;
 		}
 	};
 });;angular.module('sdk.filters')	
@@ -303,19 +302,19 @@ angular.module('sdk.directives', [])
     var _values             = {};
 
     //LOAD THE INITIAL CONFIGURATION
-    for(var name in ENVIRONMENT_CONFIGURATION){
-        set(name, ENVIRONMENT_CONFIGURATION[name]);
+    for(var env_name in ENVIRONMENT_CONFIGURATION){
+        set(env_name, ENVIRONMENT_CONFIGURATION[env_name]);
     }
 
-    for(var name in GLOBAL_CONFIGURATION){
-        set(name, GLOBAL_CONFIGURATION[name]);
+    for(var cfg_name in GLOBAL_CONFIGURATION){
+        set(cfg_name, GLOBAL_CONFIGURATION[cfg_name]);
     }
     
     function get(name, defaultValue){
         var v = _values[name]; 
-        if(typeof v == undefined){
+        if(typeof v === undefined){
             if(defaultValue){
-                return defaultValue
+                return defaultValue;
             }
             throw Error(name + " don't exists in configuration");
         }
@@ -333,16 +332,16 @@ angular.module('sdk.directives', [])
     return {
         get: get,
         exists: exists
-    }
+    };
 });;angular.module('sdk.services.configuration')
 
 .service('$Localization', function (RESOURCES) {
 
 	function get(name, defaultValue){
         var v = RESOURCES[name]; 
-        if(typeof v == undefined){
+        if(typeof v === undefined){
             if(defaultValue){
-                return defaultValue
+                return defaultValue;
             }
             throw Error(name + " don't exists in resources");
         }
@@ -356,7 +355,7 @@ angular.module('sdk.directives', [])
     return {
         get: get,
         exists: exists
-    }
+    };
 
 });
 ;angular.module('sdk.services')
@@ -382,7 +381,7 @@ angular.module('sdk.directives', [])
             }*/
         };
         
-        cfg[(method == "GET" ? "params": "data")] = body;
+        cfg[(method === "GET" ? "params": "data")] = body;
 
         $log.debug("["+method+" " + url + "] parameters: " , body);
 
@@ -404,7 +403,7 @@ angular.module('sdk.directives', [])
     return {
         get_endpoint: get_endpoint,
         invoke: invoke
-    }
+    };
 
 });;angular.module('sdk.services')
 
@@ -431,7 +430,7 @@ angular.module('sdk.directives', [])
         exists: function (name){
              return $window.localStorage[key] != null;
         }
-    }
+    };
 });;angular.module('sdk.services')
 
 // DB wrapper
@@ -451,7 +450,7 @@ angular.module('sdk.directives', [])
             self.query(query);
             $log.debug('Table ' + table.name + ' initialized');
         });
-    }
+    };
 
     var clearSchema = function(){
         angular.forEach(DB_CONFIG.tables, function(table) {
@@ -460,12 +459,12 @@ angular.module('sdk.directives', [])
             self.query(query);
             $log.debug('Table ' + table.name + ' dropped');
         });
-    }
+    };
 
     self.clearSchema  = function(){
         clearSchema();
-        createSchema()
-    }
+        createSchema();
+    };
 
     self.init = function() {
         // Use self.db = window.sqlitePlugin.openDatabase({name: DB_CONFIG.name}); in production
@@ -500,7 +499,7 @@ angular.module('sdk.directives', [])
                 values.push(data[i][columns[j]]);
             }
 
-            self.query(sql, values).success(function(){})
+            self.query(sql, values).success(function(){});
         }
     };
 
@@ -562,13 +561,12 @@ angular.module('sdk.directives', [])
                 for(var pair in bindings){
                     _values.push(bindings[pair]);
 
-                };
-
+                }
                 
                 transaction.executeSql(query, _values, 
                     function(){
 
-                        if(count == values.length){
+                        if(count === values.length){
                             deferred.resolve();
                         }
 
@@ -601,4 +599,4 @@ angular.module('sdk.directives', [])
     };
  
     return self;
-})
+});
