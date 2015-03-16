@@ -128,6 +128,8 @@ grunt lift --open-browser
 \* __[Información](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki/Lift-Command)
 :__ Para mayor información de los comandos disponibles , consulta nuestra [Wiki](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki)
 
+
+###_Are you feeling lucky??, try the command [Validate](https://github.com/dmunozgaete/angularJS_RESTful_Seed_Project/wiki/Validate-Code) ;) 
 ----------------------------------------------------------------------------------------------
 ## Direcciones de la  API y Documentación (_Swagger Specification_)
 
