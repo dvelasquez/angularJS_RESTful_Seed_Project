@@ -1,4 +1,4 @@
-# Proyecto Semilla: __AngularJS__ + __API REST__  (_Swagger Doc's_)
+# Seed Project: __AngularJS__ + __API REST__  (_Swagger Doc's_)
 
 Web Site: <http://dmunozgaete.github.io/angularJS_RESTful_Seed_Project/> 
 
@@ -24,7 +24,7 @@ El principal objetivo de este proyecto es entregar una plantilla semilla que se 
 
 
 ----------------------------------------------------------------------------------------------
-## Instalando las Dependencias  para el Ambiente de Desarrollo:
+## Instalando las Dependencias para el Ambiente de Desarrollo:
 
 _(Omitir este paso si ya has configurado previamente un ambiente de desarrollo para otro proyecto)._
 
@@ -61,7 +61,7 @@ bower update
 __Nota__: Estos comandos deben ser usados bajo la función sudo (for OSX, *nix, BSD etc) o desde una linea de comandos como Administrator (Windows) para instalar __Grunt__ & __Bower__ globalmente
 
 ----------------------------------------------------------------------------------------------
-## Configurando el ambiente de desarrollo:
+## Configurando el Ambiente de Desarrollo:
 
 Una vez instaladas las dependencias bases para nuestra plantilla, podemos comenzar a configurar un ambiente de desarrollo para el nuestro proyecto.
 
@@ -103,7 +103,7 @@ git checkout master
 ```
 
 ----------------------------------------------------------------------------------------------
-## Ejecutando nuestro ambiente de desarollo:
+## Ejecutando nuestro Ambiente de Desarrollo:
 
 Para depurar y realizar pruebas de usuarios, Es común y muy util tener un servidor web HTTP. Para este proposito se encuentra disponible un servidor web local basado en Node.js que permite entre otras cosas servir como herramienta de depuración para los desarrollos a realizar.
 
