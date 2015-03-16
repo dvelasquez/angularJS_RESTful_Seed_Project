@@ -1,6 +1,6 @@
 module.exports = function(grunt, options) {
 
-    grunt.registerTask('validate_code', ['jshint']);   //ALIAS
+    grunt.registerTask('validate', ['jshint']);   //ALIAS
 
     var conf = {
         options: {
