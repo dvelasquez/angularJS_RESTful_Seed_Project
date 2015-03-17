@@ -3,36 +3,34 @@
     'ngMaterial',               //MATERIAL DESIGN DIRECTIVES
     'uiGmapgoogle-maps',        //GOOGLE MAPS
     'sdk',                      //VALENTYS SDK LIBRARY
-    'custom'                    //CUSTOM PROJECT LIBRARY
+    'app'                       //CUSTOM PROJECT LIBRARY
 ])
 
 .run(function($WebSQL) {
     $WebSQL.init();
 })
 
-.run(function ($rootScope, $state, $location, $log) {
+.run(function ($rootScope, $state, $location, $log, $User) {
     $log.debug("application is running!!");
 
     //RESTRICT ACCESS TO LOGIN USER'S ONLY
     $rootScope.$on('$stateChangeStart', function (event, toState) {
        
-        if ( (toState.name === "services" || toState.name === "services-details") && !$Profile.isAuthenticated()) {
-            $state.go('enrollment-step-1');
+        if ( toState.name !== "login" && !$User.isAuthenticated() ) {
+            $state.go('login');
             event.preventDefault();
         }
 
     });
 
-/*
     //REDIRECT TO DASHBOARD WHEN IS AUTHENTICATED
-    if($Profile.isAuthenticated()){
-        $location.path('/services'); 
+    if($User.isAuthenticated()){
+        $location.path('/home'); 
     }
-*/
 
     //CALL WHEN THE CONFIGURATION VERSION LABEL , HAS CHANGED
-    $rootScope.$on('authentication.logout', function () {
-        $state.go('enrollment-step-1');
+    $rootScope.$on('security.logout', function () {
+        $state.go('login');
     });
 })
 
@@ -58,14 +56,11 @@
 })
 
 .config(function($mdThemingProvider){
-    $mdThemingProvider.theme('default')
-                          .primaryPalette('brown')
-                          .accentPalette('red');
+    $mdThemingProvider.theme('default');
 })
 
 .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
-        //key: 'your api key',
         v: '3.17',
         libraries: 'weather,geometry,visualization'
     });
@@ -75,55 +70,30 @@
 
     $stateProvider
 
-    .state('enrollment-step-1', {
-        url: '/enrollment/step-1',
-        templateUrl: 'views/enrollment/enrollment-step-1.html',
-        controller: 'EnrollmentStep1Controller'
+    .state('login', {
+        url: '/login',
+        templateUrl: 'views/security/login.html',
+        controller: 'LoginController'
     })
 
-    .state('enrollment-step-2', {
-        url: '/enrollment/step-2',
-        templateUrl: 'views/enrollment/enrollment-step-2.html',
-        controller: 'EnrollmentStep2Controller'
+    .state('app', {
+        url: "/app",
+        abstract: true,
+        templateUrl: "views/shared/layout.html",
+        controller: "LayoutController"
     })
 
-    .state('enrollment-step-3', {
-        url: '/enrollment/step-3/:rut',
-        templateUrl: 'views/enrollment/enrollment-step-3.html',
-        controller: 'EnrollmentStep3Controller'
-    })
-
-    .state('services', {
-        url: '/services',
-        templateUrl: 'views/service/service-home.html',
-        controller: 'ServiceController'
-    })
-
-    .state('service-details', {
-        url: '/services/details/:token',
-        templateUrl: 'views/service/service-details.html',
-        controller: 'ServiceDetailsController'
-    })
-
-    .state('service-success', {
-        url: '/services/success/:identifier',
-        templateUrl: 'views/service/service-success.html',
-        controller: 'ServiceSuccessController'
-    })
-
-    .state('service-description', {
-        url: '/services/description/:token',
-        templateUrl: 'views/service/service-description.html',
-        controller: 'ServiceDescriptionController'
-    })
-
-    .state('account', {
-        url: '/account',
-        templateUrl: 'views/account/index.html',
-        controller: 'AccountController'
+    .state('app.home', {
+        url: '/home',
+        views: {
+            content: {
+                templateUrl: 'views/home/home.html',
+                controller: 'HomeController'
+            }   
+        }
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise("/enrollment/step-1");
+    $urlRouterProvider.otherwise("/login");
 
 });

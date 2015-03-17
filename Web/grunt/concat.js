@@ -48,11 +48,11 @@ module.exports = function(grunt, options) {
 			dest: 'app/dist/sdk.js'
 		},
 
-		custom: {
+		app: {
 			src: [
-				'app/bundles/custom/js/**/*.js'
+				'app/bundles/app/js/**/*.js'
 			],
-			dest: 'app/dist/custom.js'
+			dest: 'app/dist/app.js'
 		}
 	};
 

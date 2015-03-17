@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" >
-  <head>
+<html lang="en">
+
+<head>
     <title></title>
 
     <meta charset="utf-8">
@@ -10,54 +11,80 @@
 
     <!-- ANGULAR MATERAL -->
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
-  </head>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css" />
 
-  <body layout="column" >
+    <!-- injector:css -->
+    <!-- endinjector -->
+</head>
+
+<body layout="column">
 
     <md-toolbar layout="row">
-      <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
-        <md-icon md-svg-icon="menu" ></md-icon>
-      </md-button>
-      <h1>TEst 3</h1>
+        <h1>TEst 3qwdwqdqw</h1>
     </md-toolbar>
 
     <div flex layout="row">
 
         <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
-          <md-list>
-            <md-item ng-repeat="it in ul.users">
-                <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
-                  <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                  {{it.name}}
-                </md-button>
-            </md-item>
-          </md-list>
+            <md-list>
+                <md-item ng-repeat="it in ul.users">
+                    <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
+                        <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
+                        {{it.name}}
+                    </md-button>
+                </md-item>
+            </md-list>
         </md-sidenav>
 
         <md-content flex id="content">
-          <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-          <h2>{{ul.selected.name}}</h2>
-          <p>{{ul.selected.content}}</p>
+            <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
+            <h2>{{ul.selected.name}}</h2>
+            <p>{{ul.selected.content}}</p>
 
-          <md-button class="share" md-no-ink ng-click="ul.share($event)" aria-label="Share">
-            <md-icon md-svg-icon="share"></md-icon>
-          </md-button>
         </md-content>
 
     </div>
 
     <!-- DEPENDENCIES -->
     <script src="dist/dependencies.min.js"></script>
+    <script type="text/javascript">
+        //PACKAGING FUNCTION
+        angular.$createBundle = function(bundle, namespaces){
 
-    <!-- DISTRIBUTION -->
-    <script src="dist/sdk.min.js"></script>
-    <script src="dist/custom.min.js"></script>
-    <script src="dist/controllers.min.js"></script>
+            //Create the namespace via angular style
+            angular.forEach(namespaces, function(name){ 
+                angular.module(name, []); 
+            });
+
+            //CREATE ANGULAR MODULE
+            return angular.module(bundle, namespaces);
+        };
+    </script>
+
+    
+    <!-- injector:js -->
+    <script src="/bundles/app/js/Bootstrap.js"></script>
+    <script src="/bundles/sdk/Bootstrap.js"></script>
+    <script src="/bundles/sdk/directives/SelectTextOnClick.js"></script>
+    <script src="/bundles/sdk/directives/ToNumberOnBlur.js"></script>
+    <script src="/bundles/sdk/directives/validators/Range.js"></script>
+    <script src="/bundles/sdk/directives/validators/Rut.js"></script>
+    <script src="/bundles/sdk/filters/Localize.js"></script>
+    <script src="/bundles/sdk/filters/Template.js"></script>
+    <script src="/bundles/sdk/services/configuration/$Configuration.js"></script>
+    <script src="/bundles/sdk/services/configuration/$Localization.js"></script>
+    <script src="/bundles/sdk/services/rest/$Api.js"></script>
+    <script src="/bundles/sdk/services/security/$User.js"></script>
+    <script src="/bundles/sdk/services/storage/$LocalStorage.js"></script>
+    <script src="/bundles/sdk/services/storage/$WebSQL.js"></script>
+    <script src="/controllers/security/LoginController.js"></script>
+    <!-- endinjector -->
+
 
     <!-- INITIALIZATION -->
     <script src="config/Config.js"></script>
     <script src="Application.js"></script>
 
-  </body>
+</body>
+
 </html>

@@ -19,7 +19,7 @@ module.exports = function(grunt, options) {
                 'app/config/**/*.js',
                 'app/Application.js'
             ],
-            tasks: ['concat', 'uglify'],
+            //tasks: [],
             options: {
                 spawn: false,
                 livereload: livereload

@@ -1,20 +1,10 @@
-//PACKAGING FUNCTION
-angular.$createBundle = function(bundle, namespaces){
-
-    //Create the namespace via angular style
-    angular.forEach(namespaces, function(name){ 
-        angular.module(name, []); 
-    });
-
-    //CREATE ANGULAR MODULE
-    return angular.module(bundle, namespaces);
-};
 
 //Package Bundle
 angular.$createBundle('sdk', [
     'sdk.directives',
     'sdk.filters',
     'sdk.services',
+    'sdk.services.security',
     'sdk.services.configuration',
     'sdk.services.rest',
     'sdk.services.storage'

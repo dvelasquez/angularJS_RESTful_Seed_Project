@@ -9,9 +9,8 @@
     "angular": "^1.3.x",
     "angular-animate": "v1.3.x",
     "angular-aria": "^1.3.x",
-    "angular-material": "^0.8.0"
-  },
-  "devDependencies": {
-    "angular-material": "~0.8.3"
+    "angular-material": "^0.8.0",
+    "angular-ui-router": "~0.2.13",
+    "angular-google-maps": "~2.0.17"
   }
 }

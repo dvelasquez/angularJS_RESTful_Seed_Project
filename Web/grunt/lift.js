@@ -6,14 +6,21 @@
 //------------------------------------------------------
 module.exports = function(grunt, options) {
 	
-	var on_after_lift_tasks = [
-		'concat',
-		'uglify',
-		'connect:server',
-		'watch',
-	];
+	var tasks = [];
 
-	grunt.registerTask('lift', function(){
+	tasks.push('clean');
+	if(!options.rebuild){
+		if(options.environment == "production"){
+			tasks.push('concat');
+			tasks.push('uglify');
+		}
+
+		tasks.push('injector');
+	}
+	tasks.push('connect:server');
+	tasks.push('watch');
+
+	var verbose = function(){
         
         //Clear Console
 		var util = require('util');
@@ -46,8 +53,8 @@ module.exports = function(grunt, options) {
 		grunt.log.ok(" ");
 
 		//REBUILD DEPENDENCIES
-		if(!options.rebuild_dependencies){
-			grunt.log.warn("(dependencies was ignored, (to rebuild set arg --rebuild-dependencies when run grunt)");
+		if(!options.rebuild){
+			grunt.log.warn("(dependencies was ignored, (to rebuild set arg --rebuild when run grunt)");
 		}else{
 			grunt.log.warn("(rebuild dependencies...(slow lifting)");
 		}
@@ -58,9 +65,11 @@ module.exports = function(grunt, options) {
         
 
         //Other TASKS
-        for(var task in on_after_lift_tasks){
-        	grunt.task.run(on_after_lift_tasks[task]);
+        for(var task in tasks){
+        	grunt.task.run(tasks[task]);
         }
-    });
+    };
+
+	grunt.registerTask('lift', verbose);
 
 }

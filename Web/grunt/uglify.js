@@ -37,11 +37,11 @@ module.exports = function(grunt, options) {
             dest: 'app/dist/sdk.min.js'
         },
 
-        custom: {
+        app: {
             src: [
-                'app/dist/custom.js'
+                'app/dist/app.js'
             ],
-            dest: 'app/dist/custom.min.js'
+            dest: 'app/dist/app.min.js'
         }
     };
 

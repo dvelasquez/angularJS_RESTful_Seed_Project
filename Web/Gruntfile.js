@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 
         //Global Configuration
         data: {
+            environment: 'development',
             server: {
                 hostname: 'localhost',
                 port: 8000,
@@ -18,7 +19,7 @@ module.exports = function(grunt) {
             },
             livereload: !grunt.option('no-livereload'),
             openBrowser: grunt.option('open-browser'),
-            rebuild_dependencies: grunt.option('rebuild-dependencies')
+            rebuild: grunt.option('rebuild'),
         }
     };
 

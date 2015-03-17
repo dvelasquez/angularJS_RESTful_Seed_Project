@@ -121,6 +121,9 @@ cd Web/
 # Regeneramos el ambiente de desarrollo (Puede demorarse un poco)
 sudo npm install
 
+# Regeneramos los paquetes de bower (Puede demorarse un poco)
+bower install
+
 # Finalmente levantamos el servidor web
 grunt lift --open-browser
 ```
