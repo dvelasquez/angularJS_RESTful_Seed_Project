@@ -18,7 +18,10 @@ module.exports = function(grunt, options) {
 		tasks.push('injector');
 	}
 	tasks.push('connect:server');
-	tasks.push('watch');
+
+	if(options.livereload){
+		tasks.push('watch');
+	}
 
 	var verbose = function(){
         

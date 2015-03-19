@@ -2,13 +2,23 @@ angular.module('sdk.services.configuration')
 
 .service('$Localization', function (RESOURCES) {
 
-	function get(name, defaultValue){
-        var v = RESOURCES[name]; 
-        if(typeof v === undefined){
-            if(defaultValue){
-                return defaultValue;
+    function get(name, defaultValue){
+        var v = RESOURCES[name];
+        if(typeof v == 'undefined'){
+            ns = name.split(".");
+            index = RESOURCES;
+            for(n in ns){
+                if( index[ns[n]] != undefined ){ index = index[ns[n]]; error = false }
+                else { error = true }
             }
-            throw Error(name + " don't exists in resources");
+            if( !error ) {
+                return index;
+            }else{
+                if (defaultValue) {
+                    return defaultValue
+                }
+                throw Error(name + " don't exists in resources");
+            }
         }
         return RESOURCES[name];
     }
@@ -20,6 +30,6 @@ angular.module('sdk.services.configuration')
     return {
         get: get,
         exists: exists
-    };
+    }
 
 });

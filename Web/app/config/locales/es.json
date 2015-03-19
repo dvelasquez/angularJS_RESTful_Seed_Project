@@ -1,1 +1,8 @@
-{}
+{
+	"login.username.label": "Nombre del Usuario",
+	"login.password.label": "Contraseña",
+	"login.forgotpassword": "¿ha olvidado su contraseña?",
+	"login.state.invalid.button": "complete los datos",
+	"login.state.valid.button": "autenticar",
+	"login.state.validating.button": "validando..."
+}

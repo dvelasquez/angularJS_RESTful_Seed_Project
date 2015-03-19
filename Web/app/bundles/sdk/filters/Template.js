@@ -1,6 +1,6 @@
 angular.module('sdk.filters')	
 
-.filter('Template', function ($log,$interpolate) {
+.filter('template', function ($log,$interpolate) {
 	return function (template, parameters) {
 
             var exp = $interpolate(template);

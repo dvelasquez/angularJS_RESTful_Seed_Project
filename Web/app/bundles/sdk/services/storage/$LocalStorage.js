@@ -12,7 +12,7 @@
             $window.localStorage[key] = angular.toJson(value);
         },
         getObject: function (key) {
-            return JSON.parse($window.localStorage[key] || null);
+            return angular.fromJson($window.localStorage[key] || null);
         },
         remove: function(key){
             $window.localStorage.removeItem(key);

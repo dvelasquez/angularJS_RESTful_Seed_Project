@@ -1,6 +1,6 @@
 angular.module('sdk.filters')	
 
-.filter('Localize', function ($Localization, $log, $interpolate) {
+.filter('localize', function ($Localization, $log, $interpolate) {
 	return function (text, parameters) {
 
 		try {

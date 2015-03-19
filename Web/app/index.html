@@ -13,37 +13,14 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css" />
 
+
     <!-- injector:css -->
+    <link rel="stylesheet" href="/bundles/app/css/default.css">
     <!-- endinjector -->
 </head>
 
-<body layout="column">
+<body ui-view>
 
-    <md-toolbar layout="row">
-        <h1>TEst 3qwdwqdqw</h1>
-    </md-toolbar>
-
-    <div flex layout="row">
-
-        <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
-            <md-list>
-                <md-item ng-repeat="it in ul.users">
-                    <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
-                        <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                        {{it.name}}
-                    </md-button>
-                </md-item>
-            </md-list>
-        </md-sidenav>
-
-        <md-content flex id="content">
-            <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-            <h2>{{ul.selected.name}}</h2>
-            <p>{{ul.selected.content}}</p>
-
-        </md-content>
-
-    </div>
 
     <!-- DEPENDENCIES -->
     <script src="dist/dependencies.min.js"></script>
@@ -61,9 +38,9 @@
         };
     </script>
 
-    
     <!-- injector:js -->
     <script src="/bundles/app/js/Bootstrap.js"></script>
+    <script src="/bundles/app/js/filters/icon.js"></script>
     <script src="/bundles/sdk/Bootstrap.js"></script>
     <script src="/bundles/sdk/directives/SelectTextOnClick.js"></script>
     <script src="/bundles/sdk/directives/ToNumberOnBlur.js"></script>

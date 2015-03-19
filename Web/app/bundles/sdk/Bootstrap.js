@@ -14,41 +14,32 @@ angular.$createBundle('sdk', [
     //Do Nothing ;), only for instantation
     $log.debug("debugging enabled!"); //Show only in debug mode
 
-    var fullVersion  = GLOBAL_CONFIGURATION.version;
+    var stored_key = "$_application";
+    var app_conf  = GLOBAL_CONFIGURATION.application;
+    var app_stored = $LocalStorage.getObject(stored_key);
 
-    //GET CONFIGURATION VERSION
-    var store_key = "$_appInformation";
-    var conf = $LocalStorage.getObject(store_key);
-    if(conf){
+    if(app_stored){
         
         //check version configuration , if old , broadcast a changeVersion event;
-        if(conf.version !== fullVersion || conf.environment !== GLOBAL_CONFIGURATION.environment){
+        if(app_stored.version !== app_conf.version || app_stored.environment !== app_conf.environment){
 
-            $log.debug("a new configuration version is available, calling [on_build_new_version] if exist's !", GLOBAL_CONFIGURATION.version); //Show only in debug mode
+            $log.debug("a new configuration version is available, calling [on_build_new_version] if exist's !", app_conf.version); //Show only in debug mode
 
             if(angular.isFunction(GLOBAL_CONFIGURATION.on_build_new_version)){
                 try{
-                    GLOBAL_CONFIGURATION.on_build_new_version(fullVersion , conf.version );
-
-                    conf.version = fullVersion;
-                    conf.environment = GLOBAL_CONFIGURATION.environment;
-                    $LocalStorage.setObject(store_key, conf);
-
+                    GLOBAL_CONFIGURATION.on_build_new_version(fullVersion , app_stored.version);
                 }catch(e){
+
                     $log.debug("failed to execute [on_build_new_version] function defined in config.js", e);
                     throw e;
                 }
             }
         }
 
-    }else{
-        $LocalStorage.setObject(store_key, {
-            version: fullVersion,
-            environment: GLOBAL_CONFIGURATION.environment,
-            author: GLOBAL_CONFIGURATION.author,
-            application_name: GLOBAL_CONFIGURATION.application_name
-        });
     }
+
+    //Update
+    $LocalStorage.setObject(stored_key, app_conf);
 
 })
 
@@ -71,7 +62,7 @@ angular.element(document).ready(function() {
 
     //--------------------------------------------------------------------------------------------------------------------
     //ENVIRONMENT CONFIGURATION
-    var environment = (GLOBAL_CONFIGURATION.environment + "").toLowerCase();
+    var environment = (GLOBAL_CONFIGURATION.application.environment + "").toLowerCase();
     $http.get('config/env/' + environment + '.json')
     .success(function(data) {
 
@@ -80,7 +71,7 @@ angular.element(document).ready(function() {
 
         //--------------------------------------------------------------------------------------------------------------------
         //RESOURCES LOCALIZATION
-        var lang = (GLOBAL_CONFIGURATION.language + "").toLowerCase();
+        var lang = (GLOBAL_CONFIGURATION.application.language + "").toLowerCase();
         $http.get('config/locales/' + lang + '.json')
         .success(function(data) {
 

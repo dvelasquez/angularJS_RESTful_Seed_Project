@@ -56,7 +56,9 @@
 })
 
 .config(function($mdThemingProvider){
-    $mdThemingProvider.theme('default');
+    $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .accentPalette('orange');
 })
 
 .config(function(uiGmapGoogleMapApiProvider) {

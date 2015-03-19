@@ -12,11 +12,12 @@ module.exports = function(grunt, options) {
 		server: {
 	        options: {
 	        	open:options.openBrowser,
-	            livereload:true,
+	            livereload:options.livereload,
 	            base: options.server.path,
 	            port: options.server.port,
 	            hostname: options.server.hostname,
-	            protocol: options.server.protocol
+	            protocol: options.server.protocol,
+	            keepalive: !options.livereload
 	        }
 	    }
     }

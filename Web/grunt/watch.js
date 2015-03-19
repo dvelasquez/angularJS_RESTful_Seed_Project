@@ -26,6 +26,18 @@ module.exports = function(grunt, options) {
             }
         },
 
+        //Watch for bundles changes
+        css: {
+            files: [
+                'app/bundles/**/*.css',
+            ],
+            //tasks: [],
+            options: {
+                spawn: false,
+                livereload: livereload
+            }
+        },
+
 
         //Watch for html changes
         html: {
